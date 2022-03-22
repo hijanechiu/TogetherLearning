@@ -1040,11 +1040,23 @@ section {
   overflow: hidden;
   height:600px
 }
+.pricing .box2 {
+  margin-top: -30px;
+  padding: 20px;
+  background: #fff;
+  text-align: center;
+  border: 1px solid #a1c2ab;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+  height:520px
+}
+
 .pricing h3 {
   font-weight: 400;
   margin: -20px -20px 20px -20px;
   padding: 20px 15px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #fff;
   background: #76d893;

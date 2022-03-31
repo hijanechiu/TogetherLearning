@@ -37,12 +37,12 @@ class TogetherApplicationTests {
 	}
 	
 //	@Test  成功登入,失敗則跳出密碼錯誤 
-	void login() {
-		String account="test123";
-		String password="test123";
-		Student stu=sService.login(account, password);
-		System.out.println(stu);
-	}
+//	void login() {
+//		String account="test123";
+//		String password="test123";
+//		Student stu=sService.login(account, password);
+//		System.out.println(stu);
+//	}
 	
 	
 }

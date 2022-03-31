@@ -43,21 +43,21 @@
     <div class="container d-flex align-items-center">
 
       <img class=img src="assets/img/TL2.png">
-      <h1 class="logo me-auto"><a href="index.html">Together Learning</a></h1>
+      <h1 class="logo me-auto"><a href="/index">Together Learning</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a href="index.html">首頁</a></li>
+          <li><a href="/index">首頁</a></li>
           <li><a href="about.html">關於齊上</a></li>
           <li><a href="courses.html">線上真人家教</a></li>
           <li><a href="trainers.html">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
-          <li><a href="聯絡我們.html">聯絡我們</a></li>
-          <li><a href="student.html">會員專區</a></li>
+          <li><a href="/contact">聯絡我們</a></li>
+          <li><a href="/student">會員專區</a></li>
     	<li th:if="${session==null}"><a href="/login">登入</a></li>
-        <li th:if="${session!=null}"><a href="/aaa">登出</a></li>
+        <li th:if="${session!=null}"><a href="/logout">登出</a></li>  
           <a href="#" class=""><i class="bi bi-cart"></i></a>
 
         <!--  <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
@@ -357,7 +357,7 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Together Learning</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="齊上首頁.html">首頁</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index">首頁</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">關於齊上</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="聯絡我們.html">聯絡我們</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">服務條款隱私聲明</a></li>

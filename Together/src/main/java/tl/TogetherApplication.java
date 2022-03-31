@@ -10,6 +10,6 @@ public class TogetherApplication {
 		SpringApplication.run(TogetherApplication.class, args);
 	}
 	
-
+ 
 	
 }

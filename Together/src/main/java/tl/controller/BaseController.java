@@ -1,8 +1,10 @@
 package tl.controller;
 
 import org.hibernate.service.spi.ServiceException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import tl.service.exception.AccountDuplicatedException;
 import tl.service.exception.AccountNotFoundException;
@@ -10,6 +12,7 @@ import tl.service.exception.PasswordNotMatchException;
 import tl.util.JsonResult;
 
 @ControllerAdvice
+//@ResponseStatus(code=HttpStatus.INTERNAL_SERVER_ERROR)
 public class BaseController {
 
 	/*操作成功的代號碼*/

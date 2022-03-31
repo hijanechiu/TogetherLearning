@@ -58,9 +58,7 @@
           <li><a href="courses.html">線上真人家教</a></li>
           <li><a href="trainers.html">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
-          <li><a href="聯絡我們.html">聯絡我們</a></li>
-          <li th:if="${session==null}"><a href="/login">登入</a></li>
-          <li th:if="${session!=null}"><a href="/aaa">登出</a></li>
+          <li><a href="/contact">聯絡我們</a></li>
         </ul>
         <a href="#" class=""><i class="bi bi-cart"></i></a>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -94,7 +92,12 @@
                 <div class="form-group mt-3">
                   <input type="password" class="form-control" name="password" id="password" th:required="true" placeholder="密碼" >
                 </div>
-                <div class="text-center mt-3" ><input id="btn-login" type="button" class="btn btn-outline-secondary" value="登入"></div>
+                <div class="form-group mt-2">
+                <label><input type="checkbox" name="remember-me" id="remember-me"/>記住密碼</label>
+                </div>
+                <span style="margin-right:5px">驗證碼</span><input type="text" name="captchaCode" id="captchaCode">
+				<img src="/kaptcha" id="kaptcha" width="110px" height="40px" title="點擊更新驗證碼" style="margin-left:5px"/>
+                <div class="text-center mt-2" ><input id="btn-login" type="button" class="btn btn-outline-secondary" value="登入"></div>
                 <div class="text-center mt-3"><a href="/register">註冊</a>     
                   <a href="忘記密碼.html">忘記密碼</a></div>
               </form>
@@ -124,7 +127,7 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Together Learning</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html">首頁</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index">首頁</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">關於齊上</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="聯絡我們.html">聯絡我們</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">服務條款隱私聲明</a></li>
@@ -176,20 +179,38 @@
   </footer><!-- End Footer -->
   
   <script type="text/javascript" th:inline="javascript">
-		$("#btn-login").click(function() {
+  window.onload=function(ev){
+		var kaptchaImg=document.getElementById("kaptcha");
+		kaptchaImg.onclick=function(ev1){
+			kaptchaImg.src="/kaptcha?"+Math.floor(Math.random()*100)
+			}}
+
+	$("#btn-login").click(function() {
+			var username=$("#account").val();
+			var password=$("#password").val();
+			var captchaCode=$("#captchaCode").val();
+			var rememberMe = $("#remember-me").is(":checked");
+			if(username==="" || password===""){
+				alert("請填寫帳號密碼");
+				return;
+				}
+
 			$.ajax({
-				url : "/checklogin",
+				url : "/loggin",
 				type : "POST",
-				data : $("#form-login").serialize(),
+				data : {
+					"username":username,
+					"password":password,	
+					"captchaCode":captchaCode,
+					"remember-me":rememberMe			
+					},
 				dataType : "JSON",
 				success : function(json) {
-					if (json.state == 200) {
+					if (json.isok) {
 						alert("登入成功")
 						location.href="/student";
-					}else if(json.state == 4001){
-						alert("查無該帳號資料")
-					}else if(json.state == 4002){
-					alert("密碼錯誤")}
+					}else{
+					alert(json.message)}
 				},
 				error : function(xhr) {
 					alert("查無帳號或密碼錯誤");
@@ -197,8 +218,6 @@
 			});
 		});
 	</script>
-  
-
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

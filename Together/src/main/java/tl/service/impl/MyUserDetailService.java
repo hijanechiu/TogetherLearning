@@ -18,8 +18,6 @@ import tl.repository.StudentRepository;
 @Component
 public class MyUserDetailService implements UserDetailsService {
 
-//	@Autowired 
-//	private StudentService sService;
 	
 	@Autowired
 	private StudentRepository sRep;
@@ -34,6 +32,7 @@ public class MyUserDetailService implements UserDetailsService {
 		if(student==null) {
 			throw new UsernameNotFoundException("帳號不存在");
 		}
+		//把對應的用戶信息封裝成UserDetail對象
 		return new User(student.getAccount(),student.getPassword(),Collections.EMPTY_LIST);
 		
 	}

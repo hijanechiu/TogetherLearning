@@ -3,6 +3,8 @@ package tl.service.impl;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,8 @@ import tl.repository.StudentRepository;
 import tl.service.exception.AccountDuplicatedException;
 import tl.service.exception.AccountNotFoundException;
 import tl.service.exception.PasswordNotMatchException;
+import tl.service.exception.UpdateException;
+import tl.service.exception.UserNotFoundException;
 
 @Service
 @Transactional
@@ -24,11 +28,18 @@ public class StudentService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	public Integer getIdByAccount(String account) {
+		Student student=sRep.findByAccount(account);
+		Integer sid=student.getSid();
+		return sid;
+	}
+	
 	public Student findBySid(Integer sid){
 		Student student=sRep.getById(sid);
 		return student;
 	}
 	
+	//註冊
 	public void Register(Student student) {
 		//先查詢該帳號是否已被註冊
 		String account=student.getAccount();
@@ -41,35 +52,56 @@ public class StudentService {
 		String bcEncodePwd=passwordEncoder.encode(student.getPassword());
 		student.setPassword(bcEncodePwd);
 		
-		//補全4個日誌
+		//補全4個日誌+點數歸零
 		student.setCreatedUser(student.getAccount());
 		student.setCreatedTime(new Date());
 		student.setModifiedUser(student.getAccount());
 		student.setModifiedTime(new Date());
+		student.setPoint(0);
 		sRep.save(student);
 	} 
 	
-	/*
-	public Student login(String account,String password) {
-		Student result=sRep.findByAccount(account);
+	//得到個人資料(要拿來更新)
+	public Student getInfoBySid(Integer sid){
+		Student result=sRep.getById(sid);
 		if(result==null) {
-			throw new AccountNotFoundException("查無該帳號資料");
+			throw new UserNotFoundException("查無資料");
 		}
-		
-		String bcEncodePwd=result.getPassword();
-		if(!passwordEncoder.matches(password,bcEncodePwd)){
-			throw new PasswordNotMatchException("密碼錯誤");
-		}
-		
 		Student student=new Student();
-		student.setSid(result.getSid());
-		student.setAccount(result.getAccount());
 		student.setName(result.getName());
-		
+		student.setAccount(result.getAccount());
+		student.setPhone(result.getPhone());
+		student.setEmail(result.getEmail());
 		return student;
-	}*/
+	}
+	//更新資料
+	public void changeInfo(Integer sid,String account,Student student) {
+		Student result=sRep.getById(sid);
+		if(result==null) {
+			throw new UserNotFoundException("查無資料");
+		}
+		String phone=student.getPhone();
+		String email=student.getEmail();
+		Integer rows=sRep.updateInfo(phone,email,account,new Date(),sid);
+		if(rows!=1) {
+			throw new UpdateException("更新時產生未知的異常");
+		}
+	}
 	
-	//boolean result=new BCryptPasswordEncoder().matches("用戶輸入的密碼",從資料庫去撈出加密的密碼)
-
-
+	//修改密碼
+	public void changepwd(Integer sid,String account,String oldPassword,String newPassword) {
+		Student result=sRep.getById(sid);
+		if(result==null) {
+			throw new UserNotFoundException("查無資料");
+		}
+		if(!passwordEncoder.matches(oldPassword,result.getPassword())){
+			throw new PasswordNotMatchException("輸入的原密碼錯誤");
+		}
+		String bcEncodePwd=passwordEncoder.encode(newPassword);
+		Integer rows = sRep.changePassword(bcEncodePwd,account,new Date(),sid);
+		if(rows!=1) {
+			throw new UpdateException("更新產生未知的異常");
+		}
+		
+	}
 }

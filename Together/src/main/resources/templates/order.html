@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>聯絡我們</title>
+  <title>訂單查詢</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -28,6 +28,9 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+
+
+
   <!-- =======================================================
   * Template Name: Mentor - v4.7.0
   * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
@@ -42,107 +45,117 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
+     
       <img class=img src="assets/img/TL2.png">
-      <h1 class="logo me-auto"><a href="/index">Together Learning</a></h1>
+      <h1 class="logo me-auto"><a href="index.html">Together Learning</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar order-last order-xl-0">
         <ul>
-          <li><a href="/index">首頁</a></li>
+          <li><a href="齊上首頁.html">首頁</a></li>
           <li><a href="about.html">關於齊上</a></li>
           <li><a href="courses.html">線上真人家教</a></li>
           <li><a href="trainers.html">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
-          <li><a href="/contact">聯絡我們</a></li>
-          <li><a href="/student">會員專區</a></li>
-         <li th:if="${session.sid==null}"><a href="/login">登入</a></li>
-        <li th:if="${session.sid!=null}"><a href="/logout">登出</a></li>  
+          <li><a href="聯絡我們.html">聯絡我們</a></li>
+          <li><a href="登入.html">登出</a></li>
         </ul>
         <a href="#" class=""><i class="bi bi-cart"></i></a>
         <i class="bi bi-list mobile-nav-toggle"></i>
+ 
       </nav><!-- .navbar -->
+
 
     </div>
   </header><!-- End Header -->
 
   <main id="main">
-
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2>聯絡我們</h2>
-        <p>若您有任何需要我們服務的地方，請填寫以下表單表達您的意見，我們收到您的來信後，將儘速於 3～5 日內回覆（不含週六例假日）。</p>
-        <p>  請同意授權本單位將您的個資交付內部其他單位，此個資包含：姓名、聯絡電話及E-Mail。除本公司之外，相關個資將不會交付給任何其他機構或第三人。</p>
+        <h2>此處會放公告</h2>
+       <!-- <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>-->
       </div>
     </div><!-- End Breadcrumbs -->
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div data-aos="fade-up">
-        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117845.92883377698!2d120.22300035820314!3d22.628224899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e047cb59c5ef1%3A0xeb0d3d3bee586e78!2z6LOH562W5pyDLeaVuOS9jeaVmeiCsueglOeptuaJgC3ljZfljYDoqJPnt7TkuK3lv4Mo6auY6ZuEKQ!5e0!3m2!1szh-TW!2stw!4v1647931742230!5m2!1szh-TW!2stw" 
-        frameborder="0" allowfullscreen></iframe>
-      </div>
-    
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
       <div class="container" data-aos="fade-up">
 
-        <div class="row mt-5">
-
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>地址:</h4>
-                <p>80147高雄市前金區中正四路211號8號樓之1</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>info@example.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>電話:</h4>
-                <p>07-9699885</p>
-              </div>
-
+  
+         <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="studentbox">
+              <h3>購買紀錄</h3>
+              <ul>
+                <li><a href="/order">查詢訂單</a></li>
+                <li></li>
+                <li></li>
+              </ul>
             </div>
-
           </div>
 
-          <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="姓名" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="主旨" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="訊息" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">發送</button></div>
-            </form>
-
+           <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+            <div class="studentbox">
+              <h3>個人資料</h3>
+              <ul>
+                <li><a href="/update_info">修改基本資料</a></li>
+                <li><a href="/update_password">修改密碼</a></li>
+                <li></li>
+              </ul>
+            </div>
           </div>
 
-        </div>
+         <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+            <div class="studentbox">
+              <h3>我的點數</h3>
+              <ul>
+                <li><a href="/point">點數查詢</a></li>
+                <li><a href="/coupon">折扣券查詢</a></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
 
-      </div>
-    </section><!-- End Contact Section -->
+          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+            <div class="studentbox">
+              <h3>我的學習</h3>
+              <ul>
+                <li><a href="#">我的課表</a></li>
+                <li><a href="#">測驗紀錄</a></li>
+                <li><a href="#">排名分析</a></li>
+                <li></li>
+              </ul>       
+            </div>
+          </div>
+        </div>   
+           
+              <div class="box mt-5" >
+                <h3>查詢訂單紀錄</h3>
+                <table class="col-12">
+                  <thead class="">
+                <tr>
+                  <td>訂單編號</td>
+                  <td>訂單時間</td>
+                  <td>實付金額</td>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+              <td colspan="3">
+              查無訂單
+              </td>
+              <tr>
+              </tbody>
+            </table>
+              </div>
+            </div>
+   
+    </section><!-- End Pricing Section -->
+
 
   </main><!-- End #main -->
 
@@ -157,7 +170,6 @@
             <h3>Together Learning</h3>
               <strong>Phone:</strong> 07-9699885<br>
               <strong>Email:</strong> info@example.com<br>
-            </p>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
@@ -214,10 +226,8 @@
     </div>
   </footer><!-- End Footer -->
 
-
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter.js"></script>

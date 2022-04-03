@@ -12,13 +12,13 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-@Table(name="tstudent")
+@Table(name="Student")
 @Entity
 @Component
 public class Student extends BaseEntity {
 	
 	@Id
-	@Column(name="sid")
+	@Column(name="student_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer sid;
 	
@@ -26,13 +26,13 @@ public class Student extends BaseEntity {
 	private String account;
 	
 	@Column(name="password")
-	private String password; //此處要使用bcryptPasswordEncoder作加密
+	private String password; 
 	
-	@Column(name="name")
+	@Column(name="student_name")
 	private String name;
 	
-	@Column(name="birthday")
-	private Date birthday;
+	@Column(name="birth")
+	private Date birth;
 
 	@Column(name="phone")
 	private String phone;
@@ -40,8 +40,11 @@ public class Student extends BaseEntity {
 	@Column(name="email")
 	private String email;
 	
-	@Column(name="gender")
+	@Column(name="student_gender")
 	private Integer gender; //0為男1為女
+	
+	@Column(name="point")
+	private Integer point;
 
 	public Integer getSid() {
 		return sid;
@@ -76,11 +79,11 @@ public class Student extends BaseEntity {
 	}
 
 	public Date getBirthday() {
-		return birthday;
+		return birth;
 	}
 
 	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
+		this.birth = birthday;
 	}
 
 	public String getPhone() {
@@ -91,14 +94,6 @@ public class Student extends BaseEntity {
 		this.phone = phone;
 	}
 
-	public Integer getGender() {
-		return gender;
-	}
-
-	public void setGender(Integer gender) {
-		this.gender = gender;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -107,14 +102,30 @@ public class Student extends BaseEntity {
 		this.email = email;
 	}
 
+	public Integer getGender() {
+		return gender;
+	}
+
+	public void setGender(Integer gender) {
+		this.gender = gender;
+	}
+
+	public Integer getPoint() {
+		return point;
+	}
+
+	public void setPoint(Integer point) {
+		this.point = point;
+	}
+
 	@Override
 	public String toString() {
 		return "Student [sid=" + sid + ", account=" + account + ", password=" + password + ", name=" + name
-				+ ", birthday=" + birthday + ", phone=" + phone + ", email=" + email + ", gender=" + gender + "]";
+				+ ", birthday=" + birth+ ", phone=" + phone + ", email=" + email + ", gender=" + gender + ", point="
+				+ point + "]";
 	}
 
-
-
+	
 	
 	
 }

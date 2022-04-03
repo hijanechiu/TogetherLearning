@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import tl.log.ex.AjaxResponse;
+import tl.util.AjaxResponse;
 
 /*登入成功的處理*/
 @Component

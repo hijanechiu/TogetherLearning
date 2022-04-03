@@ -19,6 +19,7 @@ import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.thymeleaf.util.StringUtils;
 
+import tl.VO.CaptchaImageVO;
 import tl.util.MyContants;
 
 @Component

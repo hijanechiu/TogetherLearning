@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import tl.log.ex.AjaxResponse;
-import tl.log.ex.CustomException;
-import tl.log.ex.CustomExceptionType;
+import tl.service.exception.CustomException;
+import tl.service.exception.CustomExceptionType;
+import tl.util.AjaxResponse;
 
 
 @Component

@@ -50,12 +50,13 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		  .addFilterBefore(captchaCodeFilter, UsernamePasswordAuthenticationFilter.class)
+		  .addFilterBefore(captchaCodeFilter, UsernamePasswordAuthenticationFilter.class) 
+		  //在UsernamePasswordAuthenticationFilter之前添加captchaCodeFilter
 		  .rememberMe()
 		  .rememberMeParameter("remember-me")
 		  .rememberMeCookieName("gfdgdfh")
 		  .tokenValiditySeconds(1*24*60*60)
-		  .tokenRepository(persistentTokenRepository())
+		  .tokenRepository(persistentTokenRepository())//將cookies存到資料庫內
 		  .and()
 	      .authorizeRequests()
 	      .antMatchers(HttpMethod.GET,"/student").authenticated()

@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import tl.service.exception.AccountDuplicatedException;
 import tl.service.exception.AccountNotFoundException;
 import tl.service.exception.PasswordNotMatchException;
+import tl.service.exception.UpdateException;
+import tl.service.exception.UserNotFoundException;
 import tl.util.JsonResult;
 
-@ControllerAdvice
-//@ResponseStatus(code=HttpStatus.INTERNAL_SERVER_ERROR)
 public class BaseController {
 
 	/*操作成功的代號碼*/
 	public static final int OK=200;
 	
-	@ExceptionHandler({ServiceException.class})
+	@ExceptionHandler(ServiceException.class)
 	public JsonResult<Void> handleException(Throwable e){
 		JsonResult<Void> result=new JsonResult<>(e);
 		if(e instanceof AccountDuplicatedException) {
@@ -30,6 +30,12 @@ public class BaseController {
 		}else if(e instanceof PasswordNotMatchException) {
 			result.setState(4002);
 			result.setMessage("密碼錯誤");
+		}else if(e instanceof UserNotFoundException) {
+			result.setState(4003);
+			result.setMessage("用戶資料不存在");
+		}else if(e instanceof UpdateException) {
+			result.setState(5000);
+			result.setMessage("更新時產生未知的異常");
 		}
 		return result;
 	}

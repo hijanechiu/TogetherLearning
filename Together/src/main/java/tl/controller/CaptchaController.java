@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 
-import tl.config.CaptchaImageVO;
+import tl.VO.CaptchaImageVO;
 import tl.util.MyContants;
 
 

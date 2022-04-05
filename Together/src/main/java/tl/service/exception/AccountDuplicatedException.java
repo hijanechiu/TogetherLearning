@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /*帳號已被重複註冊的異常*/
-@ResponseStatus(code=HttpStatus.INTERNAL_SERVER_ERROR)
+//@ResponseStatus(code=HttpStatus.INTERNAL_SERVER_ERROR)
 public class AccountDuplicatedException extends ServiceException {
 
 

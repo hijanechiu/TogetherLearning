@@ -232,11 +232,11 @@
 					if (json.state == 200) {
 						alert("註冊成功,請重新登入")
 						location.href="/index";
-					} else{
+					}else{
 						alert(json.message)}
 				},
 				error : function(xhr) {
-					alert("註冊時產生未知的錯誤" + xhr.status+xhr.message);
+					alert("註冊時產生未知的錯誤" + xhr.status+xhr.readyState);
 				}
 			});
 		});

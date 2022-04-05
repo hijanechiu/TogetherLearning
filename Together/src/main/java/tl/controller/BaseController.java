@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import tl.service.exception.AccountDuplicatedException;
 import tl.service.exception.AccountNotFoundException;
@@ -13,6 +14,7 @@ import tl.service.exception.UpdateException;
 import tl.service.exception.UserNotFoundException;
 import tl.util.JsonResult;
 
+@ControllerAdvice
 public class BaseController {
 
 	/*操作成功的代號碼*/

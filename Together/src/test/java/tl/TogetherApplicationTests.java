@@ -9,10 +9,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import tl.VO.DetailVO;
+import tl.VO.TestItemVO;
+import tl.entity.Coupon;
 import tl.entity.OrderDetail;
+import tl.entity.Point;
 import tl.entity.Student;
 import tl.entity.TLOrder;
+import tl.repository.CouponRepository;
+import tl.repository.OrderDetailRepository;
 import tl.repository.OrderRepository;
+import tl.repository.TestItemRepository;
+import tl.service.impl.PointService;
 import tl.service.impl.StudentService;
 
 @SpringBootTest
@@ -24,6 +32,7 @@ class TogetherApplicationTests {
 
 	@Autowired
 	private StudentService sService;
+	
 	
 //	@Test 註冊測試成功
 	void saveStudent() {
@@ -87,6 +96,57 @@ class TogetherApplicationTests {
 		sService.changepwd(6, "Jane", "123", "321");
 	}
 	
+	@Test
+	void findOrderBySid() {
+		List<TLOrder> list = oResp.findBySid(6);
+		for(TLOrder o:list) {
+		System.out.println(o);
+		}
+		
+	}
 	
+//	@Test
+//	void test() {
+//		List<DetailVO> list = odRep.findDetailByOrderID(12);
+//		System.out.println(list);
+//		
+//	}
+	
+	@Autowired
+	private CouponRepository cRep;
+	
+	@Test
+	void findCouponBySid() {
+		List<Coupon>list=cRep.findBySid(4);
+		if(!list.isEmpty())
+		System.out.println(list);
+	}
+	
+	@Autowired
+	private PointService pService;
+	
+	@Test
+	void findPointBySid() {
+		List<Point> list = pService.getPointBySid(5);
+		System.out.println(list);
+	}
+	
+	@Autowired 
+	private TestItemRepository tRep;
+	
+	@Test
+	void findDetailBySid() {
+		List<TestItemVO> list=tRep.findDetailBySid(5);
+		System.out.println(list);
+	}
+	
+	@Autowired
+	private OrderDetailRepository odRep;
+	
+	@Test
+	void findOrderDetailByOid() {
+		List<DetailVO> list = odRep.findDetailByOid(12);
+		System.out.println(list);
+	}
 	
 }

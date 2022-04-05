@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import tl.service.exception.AccountDuplicatedException;
 import tl.service.exception.CustomException;
 import tl.service.exception.CustomExceptionType;
 import tl.util.AjaxResponse;
@@ -34,8 +35,9 @@ public void onAuthenticationFailure(HttpServletRequest request, HttpServletRespo
 		AuthenticationException exception) throws IOException, ServletException {
 	
 	String errorMsg="請檢查帳號和密碼輸入是否正確";
-	if(exception instanceof SessionAuthenticationException)
-		errorMsg=exception.getMessage();
+	if(exception instanceof SessionAuthenticationException) {
+		errorMsg=exception.getMessage();}
+	
 	
 	
 	if(loginType.equalsIgnoreCase("JSON")) {
@@ -50,6 +52,6 @@ public void onAuthenticationFailure(HttpServletRequest request, HttpServletRespo
 
 
 
-
-
 }
+
+

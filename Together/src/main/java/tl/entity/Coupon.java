@@ -29,7 +29,7 @@ public class Coupon {
 	@Column(name = "discount")
 	private Float discount;
 	@Column(name = "expire_date")
-	private Date ExpiredDate;
+	private Date expiredDate;
 	
 	public Integer getCid() {
 		return cid;
@@ -62,10 +62,15 @@ public class Coupon {
 		this.discount = discount;
 	}
 	public Date getExpiredDate() {
-		return ExpiredDate;
+		return expiredDate;
 	}
 	public void setExpiredDate(Date expiredDate) {
-		ExpiredDate = expiredDate;
+		this.expiredDate = expiredDate;
+	}
+	@Override
+	public String toString() {
+		return "Coupon [cid=" + cid + ", cname=" + cname + ", sid=" + sid + ", code=" + code + ", discount=" + discount
+				+ ", expiredDate=" + expiredDate + "]";
 	}
 
 }

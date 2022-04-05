@@ -27,7 +27,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
 
 
@@ -125,8 +125,7 @@
               <h3>我的學習</h3>
               <ul>
                 <li><a href="#">我的課表</a></li>
-                <li><a href="#">測驗紀錄</a></li>
-                <li><a href="#">排名分析</a></li>
+                 <li><a href="/test">測驗紀錄</a></li>
                 <li></li>
               </ul>       
             </div>
@@ -144,7 +143,7 @@
                   <td>剩餘點數</td>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="point-list">
               <tr>
               <td colspan="4">
               查無紀錄
@@ -239,6 +238,44 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script type="text/javascript">
+	$(document).ready(function(){
+		showPointList();
+		});
+	function showPointList(){
+		$.ajax({
+		url:"/check_point",
+		type:"GET",
+		dataType:"JSON",
+		success:function(json){
+		if(json.state==200&&json.data!=null){
+		$("#point-list").empty()
+		let list=json.data
+        let sum=0;
+		for(let i=0;i<list.length;i++){
+    	sum=sum+list[i].points;
+		let tr='<tr id=#{pid}>+\n'+
+            '<td>#{points}</a></td>\n'+
+            '<td>#{changedReason}</td>\n'+
+            '<td>#{changedTime}</td>\n'+
+            '<td>#{sid}</td>\n'+
+        	'<tr>';
+    	tr=tr.replace(/#{pid}/g,list[i].pid);
+    	tr=tr.replace(/#{points}/g,list[i].points);
+    	tr=tr.replace(/#{changedReason}/g,list[i].changedReason);
+    	tr=tr.replace(/#{changedTime}/g,list[i].changedTime);
+    	tr=tr.replace(/#{sid}/g,sum);
+    	console.log(sum);
+    	$("#point-list").append(tr);
+			}
+			}	
+			},
+		error:function(xhr){
+		alert("載入折扣券出現問題請通知客服"+xhr.message)
+		}
+			})
+		}
+	</script>
 
 </body>
 

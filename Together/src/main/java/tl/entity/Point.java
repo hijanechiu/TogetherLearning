@@ -18,7 +18,7 @@ public class Point {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="Points")
+	@Column(name="point_record_id")
 	private Integer pid;
 
 	@Column(name="student_id")
@@ -26,9 +26,45 @@ public class Point {
 	@Column(name="point")
 	private Integer points;
 	@Column(name="changed_reason")
-	private String changedReasion;
-	@Column(name="changed_date")
+	private String changedReason;
+	@Column(name="changed_time")
 	private Date changedTime;
+	
+	public Integer getPid() {
+		return pid;
+	}
+	public void setPid(Integer pid) {
+		this.pid = pid;
+	}
+	public Integer getSid() {
+		return sid;
+	}
+	public void setSid(Integer sid) {
+		this.sid = sid;
+	}
+	public Integer getPoints() {
+		return points;
+	}
+	public void setPoints(Integer points) {
+		this.points = points;
+	}
+	public String getChangedReason() {
+		return changedReason;
+	}
+	public void setChangedReason(String changedReason) {
+		this.changedReason = changedReason;
+	}
+	public Date getChangedTime() {
+		return changedTime;
+	}
+	public void setChangedTime(Date changedTime) {
+		this.changedTime = changedTime;
+	}
+	@Override
+	public String toString() {
+		return "Point [pid=" + pid + ", sid=" + sid + ", points=" + points + ", changedReason=" + changedReason
+				+ ", changedTime=" + changedTime + "]";
+	}
 
 
 }

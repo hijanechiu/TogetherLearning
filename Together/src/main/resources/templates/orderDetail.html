@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
@@ -8,6 +8,7 @@
   <title>訂單查詢</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+  <base href="/"> 
 
   <!-- Favicons -->
   <link href="assets/img/TL2.png" rel="icon">
@@ -28,8 +29,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
   <!-- =======================================================
   * Template Name: Mentor - v4.7.0
@@ -125,8 +125,7 @@
               <h3>我的學習</h3>
               <ul>
                 <li><a href="#">我的課表</a></li>
-                <li><a href="#">測驗紀錄</a></li>
-                <li><a href="#">排名分析</a></li>
+                 <li><a href="/test">測驗紀錄</a></li>
                 <li></li>
               </ul>       
             </div>
@@ -144,7 +143,7 @@
                   <td>折扣數</td>
                 </tr>
               </thead>
-            <tbody>
+            <tbody id="orderDetail-list">
               <tr>
                   <td>100點</td>
                   <td>100元</td>
@@ -227,6 +226,7 @@
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
+    <input id="oid" type="hidden" th:value="${oid}" />
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
@@ -241,7 +241,45 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  
+  <script type="text/javascript">
+  var oid=$("#oid").val();
+  $(document).ready(function(){
+		showOrderDetailList();
+		});
+	function showOrderDetailList(){
+		$.ajax({
+		url:"/check/"+oid+"/orderDetail",
+		type:"GET",
+		dataType:"JSON",
+		success:function(json){
+		if(json.state==200&&json.data!=null){
+		$("#orderDetail-list").empty()
+		let list=json.data
+		for(let i=0;i<list.length;i++){
+		let tr='<tr id="#{did}">+\n'+
+          '<td>#{productPoint}</td>\n'+
+          '<td>#{unitPrice}</td>\n'+
+          '<td>#{quantity}</td>\n'+
+          '<td>#{couponId}</td>\n'+
+          '<td>#{discount}</td>\n'+
+      	'<tr>';
+  	tr=tr.replace(/#{did}/g,list[i].did);
+  	tr=tr.replace(/#{productPoint}/g,list[i].productPoint);
+  	tr=tr.replace(/#{unitPrice}/g,list[i].unitPrice);
+  	tr=tr.replace(/#{quantity}/g,list[i].quantity);
+  	tr=tr.replace(/#{couponId}/g,list[i].couponId);
+  	tr=tr.replace(/#{discount}/g,list[i].discount);
+  	$("#orderDetail-list").append(tr);
+		}
+		}
+		},
+		error:function(xhr){
+		alert("載入訂單出現問題請通知客服"+xhr.message)
+		}
+			})
+		}
+  
+</script>
 </body>
-
 </html>

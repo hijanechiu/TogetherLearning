@@ -11,6 +11,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="Points")
 @Component
@@ -27,7 +29,9 @@ public class Point {
 	private Integer points;
 	@Column(name="changed_reason")
 	private String changedReason;
+	
 	@Column(name="changed_time")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm",timezone = "GMT+8")
 	private Date changedTime;
 	
 	public Integer getPid() {

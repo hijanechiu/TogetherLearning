@@ -1073,6 +1073,26 @@ section {
   overflow: hidden;
   height:300px
 }
+.pricing .forgetpwdbox{
+  padding: 20px;
+  background: #fff;
+  text-align: center;
+  border: 1px solid #a1c2ab;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+  height:230px
+}
+.pricing .resetpwdbox{
+  padding: 20px;
+  background: #fff;
+  text-align: center;
+  border: 1px solid #a1c2ab;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+  height:250px
+}
 
 .pricing h3 {
   font-weight: 400;
@@ -1267,15 +1287,16 @@ section {
 .contact .php-email-form textarea {
   padding: 10px 12px;
 }
-.contact .php-email-form button[type=submit] {
+.contact input[type=button] {
   background: #5fcf80;
   border: 0;
   padding: 10px 35px;
   color: #fff;
   transition: 0.4s;
   border-radius: 50px;
+  margin-top:15px;
 }
-.contact .php-email-form button[type=submit]:hover {
+.contact input[type=button]:hover {
   background: #3ac162;
 }
 @-webkit-keyframes animate-loading {
@@ -1387,7 +1408,7 @@ section {
   padding: 4px 8px;
   width: calc(100% - 100px);
 }
-#footer .footer-newsletter form input[type=submit] {
+#footer .footer-newsletter form input[type=button] {
   position: absolute;
   top: -1px;
   right: -1px;
@@ -1402,7 +1423,7 @@ section {
   border-radius: 50px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
-#footer .footer-newsletter form input[type=submit]:hover {
+#footer .footer-newsletter form input[type=button]:hover {
   background: #3ac162;
 }
 #footer .credits {

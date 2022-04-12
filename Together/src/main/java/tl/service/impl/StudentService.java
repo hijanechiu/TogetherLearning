@@ -1,6 +1,10 @@
 package tl.service.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
+
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
@@ -10,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import net.bytebuddy.utility.RandomString;
+import tl.entity.AuthenticationProvider;
 import tl.entity.Student;
 import tl.repository.StudentRepository;
 import tl.service.exception.AccountDuplicatedException;
@@ -27,6 +33,9 @@ public class StudentService {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private EmailSenderService emailService;
 
 	public Integer getIdByAccount(String account) {
 		Student student=sRep.findByAccount(account);
@@ -104,4 +113,62 @@ public class StudentService {
 		}
 		
 	}
+	
+	public Student getStudentByEmail(String email) {
+		return sRep.findByEmail(email);
+	}
+	
+	//更新token
+	public void updateResetPasswordToken(String email,HttpServletRequest request) throws UnsupportedEncodingException, MessagingException {
+        Student result = sRep.findByEmail(email);
+        if (result != null) {
+        	String token=RandomString.make(30);
+        	result.setModifiedUser("管理員");
+        	result.setModifiedTime(new Date());
+        	result.setResetPasswordToken(token);
+            sRep.save(result);
+            String resetPasswordLink=getSiteURL(request)+"/reset_password?token=" + token;
+            emailService.sendresetPasswordLink(email, resetPasswordLink);
+        } else {
+            throw new UserNotFoundException("查無資料");
+        }
+    }
+	
+	//用token來尋找用戶
+    public Student getByResetPasswordToken(String token) {
+        return sRep.findByResetPasswordToken(token);
+    }
+    
+    //更新密碼
+    public void updatePassword(Student student, String newPassword) {
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        student.setPassword(encodedPassword);
+        student.setResetPasswordToken(null);
+        student.setModifiedUser(student.getName());
+        student.setModifiedTime(new Date());
+        sRep.save(student);
+    }
+    
+    public void createNewStudentAfterOAuthLoginSuccess(String email,String name,AuthenticationProvider provider) {
+    	Student student=new Student();
+    	student.setEmail(email);
+    	student.setName(name);
+    	student.setCreatedUser(name);
+    	student.setCreatedTime(new Date());
+    	student.setAuthenticationProvider(provider);
+    	sRep.save(student);
+    }
+    
+    public void updateStudentAfterOAuthLoginSuccess(Student student,String name,AuthenticationProvider provider) {
+    	student.setName(name);
+    	student.setAuthenticationProvider(provider);
+    	sRep.save(student);
+    }
+    
+    
+    public static String getSiteURL(HttpServletRequest request) {
+        String siteURL = request.getRequestURL().toString();
+        return siteURL.replace(request.getServletPath(), "");
+    }
+    
 }

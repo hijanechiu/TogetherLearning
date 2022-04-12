@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
 
   <title>Together Learning</title>
   <meta content="" name="description">
@@ -27,6 +28,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
   <!-- =======================================================
   * Template Name: Mentor - v4.7.0
@@ -48,13 +50,13 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
       <ul>
           <li><a href="/index">首頁</a></li>
-          <li><a href="about.html">關於齊上</a></li>
+          <li><a href="/about">關於齊上</a></li>
           <li><a href="courses.html">線上真人家教</a></li>
           <li><a href="trainers.html">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
           <li><a href="/contact">聯絡我們</a></li>
           <li><a href="/student">會員專區</a></li>
-    	<li th:if="${session.sid==null}"><a href="/login">登入</a></li>
+    	<!--<li th:if="${session.sid==null}"><a href="/login">登入</a></li>  -->
         <li th:if="${session.sid!=null}"><a href="/logout">登出</a></li>  
           <a href="#" class=""><i class="bi bi-cart"></i></a> 
 		</div>
@@ -167,24 +169,24 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="course-item">
-              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
+              <img src="assets/img/ch.jpg" class="img-fluid" alt="...">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Web Development</h4>
-                  <p class="price">$169</p>
+                  <h4>國文</h4>
+                  <p class="price">$180/1h</p>
                 </div>
 
-                <h3><a href="course-details.html">Website Design</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <h3><a href="course-details.html">國文課程的古典與創新</a></h3>
+                <p>感受學習法，以培育感受能力為目標，讓學員在聽、說、讀、寫之外，更重視學員身體的感覺與心理的感受，藉以活化語文課程，培養學員深度感受，達到培育感性人才、開發創意的目的。</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-5.jpg" class="img-fluid" alt="">
                     <span>周絕倫</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;50
+                    <i class="bx bx-user"></i>&nbsp;100
                     &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;65
+                    <i class="bx bx-heart"></i>&nbsp;500
                   </div>
                 </div>
               </div>
@@ -193,24 +195,24 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="course-item">
-              <img src="assets/img/course-2.jpg" class="img-fluid" alt="...">
+              <img src="assets/img/en.jpg" class="img-fluid" alt="...">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Marketing</h4>
-                  <p class="price">$250</p>
+                  <h4>英文</h4>
+                  <p class="price">$180/1h</p>
                 </div>
 
-                <h3><a href="course-details.html">Search Engine Optimization</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <h3><a href="course-details.html">跟著玲玲Rap！用嘻哈打造自然英文發音</a></h3>
+                <p>課程希望擺脫以往制式的英文教學，將視覺、聽覺、動覺三個元素合而為一。包含用生動的嘴巴瑜伽來做實際演練，將音標和有趣、可愛的故事圖像結合，幫助記憶，並用最嘻哈音樂記憶法幫助你把音標「唱」出來。</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-6.jpg" class="img-fluid" alt="">
                     <span>王薰玲</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;35
+                    <i class="bx bx-user"></i>&nbsp;200
                     &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;42
+                    <i class="bx bx-heart"></i>&nbsp;666
                   </div>
                 </div>
               </div>
@@ -219,24 +221,24 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
             <div class="course-item">
-              <img src="assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <img src="assets/img/math.jpg" class="img-fluid" alt="...">
               <div class="course-content">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                  <h4>Content</h4>
-                  <p class="price">$180</p>
+                  <h4>數學</h4>
+                  <p class="price">$180/1h</p>
                 </div>
 
-                <h3><a href="course-details.html">Copywriting</a></h3>
-                <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                <h3><a href="course-details.html">數學也可以這樣學</a></h3>
+                <p>藉由大量圖片與作品，引導學生認識大自然、空間以及時間裡的數學。華德福的教育方式強調學習與經驗的連結。對學生而言，概念與觀察的結合會帶來驚喜與啟蒙。數學不只是計算與公式，更是探索、興趣與應用，也是一項重要生活技能。</p>
                 <div class="trainer d-flex justify-content-between align-items-center">
                   <div class="trainer-profile d-flex align-items-center">
                     <img src="assets/img/trainers/trainer-7.jpg" class="img-fluid" alt="">
                     <span>林俊絕</span>
                   </div>
                   <div class="trainer-rank d-flex align-items-center">
-                    <i class="bx bx-user"></i>&nbsp;20
+                    <i class="bx bx-user"></i>&nbsp;188
                     &nbsp;&nbsp;
-                    <i class="bx bx-heart"></i>&nbsp;85
+                    <i class="bx bx-heart"></i>&nbsp;555
                   </div>
                 </div>
               </div>
@@ -275,7 +277,7 @@
               <img src="assets/img/trainers/trainer-6.jpg" class="img-fluid" alt="">
               <div class="member-content">
                 <h4>王薰玲</h4>
-                <span>學歷：台灣大學  中文系</span>
+                <span>學歷：台灣大學  英文系</span>
                     <p>教學經驗：5年</p>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
@@ -292,7 +294,7 @@
               <img src="assets/img/trainers/trainer-7.jpg" class="img-fluid" alt="">
               <div class="member-content">
                 <h4>林俊絕</h4>
-                <span>學歷：台灣大學  中文系</span>
+                <span>學歷：台灣大學  數學系</span>
                 <p>教學經驗：8年</p>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
@@ -329,8 +331,8 @@
             <h4>Together Learning</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="/index">首頁</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">關於齊上</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="聯絡我們.html">聯絡我們</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/about">關於齊上</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/contact">聯絡我們</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">服務條款隱私聲明</a></li>
             </ul>
           </div>
@@ -346,15 +348,25 @@
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>獲取最新資訊</h4>
             <p>訂閱我們獲取最新資訊</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="訂閱">
+            <form>
+              <input id="email" type="email" name="email" placeholder="請輸入信箱"><input id="btn-subscribe" type="button" value="訂閱">
             </form>
           </div>
 
         </div>
       </div>
     </div>
-
+<form id="form1" class="p-5">
+<div id="aa" class="form-control" 
+style="position:fixed; bottom:65px; right:0px; width:200px; height:250px; background-color: #7ed899;opacity:0.8;border-radius:20px;font-size:16px;text-align:left;color:#444444;padding:10px">
+<div style="height:150px;overflow:auto;" id="msg-io"></div>
+<div class="pb-3">
+<input class="form-control" type="text" name="msg-input" 
+	id="msg-input" placeholder="請輸入訊息" />
+<button style="margin-top:8px;text-align:left" type="submit" class="btn btn-outline-secondary">送出</button>
+</div>
+</div>
+</form>
     <div class="container d-md-flex py-4">
 
       <div class="me-md-auto text-center text-md-start">
@@ -377,6 +389,7 @@
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
+    
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
@@ -392,6 +405,78 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+	var websocket=null;
+	if('WebSocket' in window){
+		websocket=new WebSocket('ws://localhost:8080/websocket');
+	}else{
+		alert("當前瀏覽器不支持websocket");
+	}
+
+	websocket.onopen=function(event){
+	}
+
+	websocket.onclose=function(event){
+		console.log("關閉連接");
+	}
+
+	websocket.onmessage=function(event){
+		
+		if(event.data=='contact'){
+		$("#msg-io").append($('<br>'+'<a href="/contact">'+"聯絡我們"+'</a>'));
+		}else if(event.data=='reg'){
+		$("#msg-io").append($('<br>'+'<a href="/register">'+"註冊"+'</a>'));
+		}else{
+		$("#msg-io").append($('<br>')).append(event.data)
+		}
+	    var msgIoDiv = $("#msg-io")[0];
+	    msgIoDiv.scrollTo(0,msgIoDiv.scrollHeight);
+	}
+	$("#form1").submit(function(){
+		websocket.send($("#msg-input").val());
+		$("#msg-input").val("");
+		return false;
+	});
+	
+	websocket.error=function(){
+		alert("連接發生錯誤")
+	}
+	window.onbeforeunload=function(){
+		websocket.close();
+	}
+  </script>
+  <script type="text/javascript">
+  $("#btn-subscribe").click(function(){
+	  var email=$("#email").val();
+	  var emailRegxp = /[\w-]+@([\w-]+\.)+[\w-]+/; 
+	  if(email===""){
+		alert("請填寫信箱")
+		return false
+		 }else if(emailRegxp.test(email) != true){
+		alert('電子信箱格式錯誤');
+		return false;
+		}
+	 $.ajax({
+			url : "/subscribe",
+			type : "POST",
+			data : {
+				"email":email
+				},
+			dataType : "JSON",
+			success : function(json) {
+				if (json.state==200) {
+					alert("感謝訂閱，請查看信箱")
+					location.href="/index"
+				}else{
+				alert("訂閱失敗，請稍後再試或聯絡客服")
+				}
+			},
+			error : function(xhr) {
+				alert("訂閱失敗，請稍後再試或聯絡客服");
+			}
+		});
+  });
+  </script>
 
 </body>
 

@@ -49,14 +49,14 @@
 
      
       <img class=img src="assets/img/TL2.png">
-      <h1 class="logo me-auto"><a href="index.html">Together Learning</a></h1>
+      <h1 class="logo me-auto"><a href="/index">Together Learning</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-xl-0">
         <ul>
           <li><a href="/index">首頁</a></li>
-          <li><a href="about.html">關於齊上</a></li>
+          <li><a href="/about">關於齊上</a></li>
           <li><a href="courses.html">線上真人家教</a></li>
           <li><a href="trainers.html">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
@@ -116,7 +116,7 @@
 							</div>
                   <div class="form-group mt-2">
                     <label>生日：</label>
-                    <input type="date" class="form-control" name="birthday" id="birthday" required="required">
+                    <input type="date" class="form-control" name="birth" id="birth" required="required">
                   </div>
                   <div class="form-group mt-2">
                    <label>電話：</label>
@@ -159,9 +159,9 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Together Learning</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="齊上首頁.html">首頁</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">關於齊上</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="聯絡我們.html">聯絡我們</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index">首頁</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/about">關於齊上</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/contact">聯絡我們</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">服務條款隱私聲明</a></li>
             </ul>
           </div>
@@ -178,7 +178,7 @@
             <h4>獲取最新資訊</h4>
             <p>訂閱我們獲取最新資訊</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="訂閱">
+              <input type="email" name="email"><input type="button" value="訂閱">
             </form>
           </div>
 
@@ -214,15 +214,22 @@
 				var username=$("#account").val();
 				var password=$("#password").val();
 				var name=$("#name").val();
-				var birthday = $("#birthday").val();
+				var birth = $("#birth").val();
 				var phone = $("#phone").val();    
 				var email = $("#email").val();
-				if(username=="" || password==""|| birthday=="" || phone=="" || email=="" || name==""){
+				var emailRegxp = /[\w-]+@([\w-]+\.)+[\w-]+/;
+				if(username=="" || password==""|| birth=="" || phone=="" || email=="" || name==""){
 					alert("請填寫完整資訊");
 					return;
 				}else if((!document.getElementById("gender-male").checked)&&(!document.getElementById("gender-female").checked)){
 					alert("請選擇性別")
-					return;}
+					return;
+				}else if(emailRegxp.test(email) != true){
+					alert('電子信箱格式錯誤');
+					$('#email').focus();
+					$('#email').select();
+					return false;
+				}
 			$.ajax({
 				url : "/reg",
 				type : "POST",
@@ -236,7 +243,7 @@
 						alert(json.message)}
 				},
 				error : function(xhr) {
-					alert("註冊時產生未知的錯誤" + xhr.status+xhr.readyState);
+					alert("註冊時產生錯誤，請聯絡客服");
 				}
 			});
 		});

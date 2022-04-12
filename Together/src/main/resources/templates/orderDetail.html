@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>訂單查詢</title>
+  <title>訂單明細查詢</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
   <base href="/"> 
@@ -54,7 +54,7 @@
       <nav id="navbar" class="navbar order-last order-xl-0">
         <ul>
           <li><a href="/index">首頁</a></li>
-          <li><a href="about.html">關於齊上</a></li>
+          <li><a href="/about">關於齊上</a></li>
           <li><a href="courses.html">線上真人家教</a></li>
           <li><a href="trainers.html">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
@@ -177,9 +177,9 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Together Learning</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="齊上首頁.html">首頁</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">關於齊上</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="聯絡我們.html">聯絡我們</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index">首頁</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/about">關於齊上</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/contact">聯絡我們</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">服務條款隱私聲明</a></li>
             </ul>
           </div>
@@ -196,7 +196,7 @@
             <h4>獲取最新資訊</h4>
             <p>訂閱我們獲取最新資訊</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="訂閱">
+              <input type="email" name="email"><input type="button" value="訂閱">
             </form>
           </div>
 
@@ -257,6 +257,8 @@
 		$("#orderDetail-list").empty()
 		let list=json.data
 		for(let i=0;i<list.length;i++){
+		let couponId=list[i].couponId==null?"無":list[i].couponId
+		let discount=list[i].discount==null?"無":list[i].discount
 		let tr='<tr id="#{did}">+\n'+
           '<td>#{productPoint}</td>\n'+
           '<td>#{unitPrice}</td>\n'+
@@ -268,8 +270,8 @@
   	tr=tr.replace(/#{productPoint}/g,list[i].productPoint);
   	tr=tr.replace(/#{unitPrice}/g,list[i].unitPrice);
   	tr=tr.replace(/#{quantity}/g,list[i].quantity);
-  	tr=tr.replace(/#{couponId}/g,list[i].couponId);
-  	tr=tr.replace(/#{discount}/g,list[i].discount);
+  	tr=tr.replace(/#{couponId}/g,couponId);
+  	tr=tr.replace(/#{discount}/g,discount);
   	$("#orderDetail-list").append(tr);
 		}
 		}

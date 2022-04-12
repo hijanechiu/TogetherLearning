@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -18,7 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 import tl.service.impl.MyUserDetailService;
 
 @Configuration
@@ -39,6 +40,12 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private CaptchaCodeFilter captchaCodeFilter;
+	
+//	@Autowired
+//	private CustomOAuth2UserService oAuth2UserService;
+	
+//	@Autowired
+//	private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -70,13 +77,19 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
 		  .deleteCookies("JSESSIONID")
 		  .and()
 		  .csrf().disable()
-	      .formLogin()
+		  .formLogin()
 	      .loginPage("/login")
 	      .loginProcessingUrl("/loggin")
 	      .usernameParameter("username")
 	      .passwordParameter("password")
 	      .successHandler(myAuthenticationSuccessHandler)
 	      .failureHandler(myAuthenticationFailureHandler)
+		  .and()
+		  .oauth2Login()
+		  .loginPage("/login")
+//		  .userInfoEndpoint().userService(oAuth2UserService)
+//		  .and()
+//		  .successHandler(oAuth2LoginSuccessHandler)
 		  .and()
 	      .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
 	      .sessionFixation().migrateSession()
@@ -86,7 +99,6 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
 		  .and()
 		  ;
 	}
-
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
@@ -103,5 +115,15 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
 		JdbcTokenRepositoryImpl tokenRepository=new JdbcTokenRepositoryImpl();
 		tokenRepository.setDataSource(dataSource);
 		return tokenRepository;}
+	
+	@Bean
+	public ServerEndpointExporter serverEndpointExporter() {
+		return new ServerEndpointExporter();
+	}
+	
+	@Bean
+	public SimpleMailMessage message() {
+		return new SimpleMailMessage();
+	}
 
 }

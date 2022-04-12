@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>關於齊上</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/TL2.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Mentor - v4.7.0
+  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+	 <img class=img src="assets/img/TL2.png">
+      <h1 class="logo me-auto"><a href="/index">Together Learning</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a href="/index">首頁</a></li>
+         <li><a href="/about">關於齊上</a></li>
+        <li><a href="courses.html">線上真人家教</a></li>
+          <li><a href="trainers.html">測驗中心</a></li>
+          <li><a href="events.html">點數購買</a></li>
+          <li><a id href="/contact">聯絡我們</a></li>
+          <li><a href="/student">會員專區</a></li>
+        <li th:if="${session.sid!=null}"><a href="/logout">登出</a></li>  
+          <a href="#" class=""><i class="bi bi-cart"></i></a> 
+		</div>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>關於齊上</h2>
+        <p>有溫度的教育，永遠都是最可貴的價值</p>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+            <h3>Together Learning,Learning Together</h3>
+            <h4>齊上永遠陪您一起成長</h4>
+            <p class="fst-italic">
+              齊上累積超過1000名學生的學習紀錄，提供各類課程，不管你在找任何種類,我們都可以滿足你的需求，並提供最即時的學生評價回饋數據，供您參考選擇。
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> 在繁忙的現代中，還是秉持著學無止盡的精神，創造出舒適的學習環境，一對一教學，且課程時間隨你安排。
+</li>
+              <li><i class="bi bi-check-circle"></i> 設置課前測驗，讓你能夠更簡單的了解自己的程度，並且選擇你需要的課程進行學習。
+</li>
+              <li><i class="bi bi-check-circle"></i> 就算時間沒辦法跟老師對上，也提供了影片學習，更能夠靈活地運用時間，不錯過一絲一毫學習的機會。
+</li>
+
+			<li><i class="bi bi-check-circle"></i> 透過淺顯易懂的代幣方式，只需要預先購買代幣，隨處都可以上課。
+
+</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+   <section id="counts" class="counts section-bg">
+      <div class="container">
+
+        <div class="row counters">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
+            <p>學生人數</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="500" data-purecounter-duration="1" class="purecounter"></span>
+            <p>課程數量</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="15000" data-purecounter-duration="1" class="purecounter"></span>
+            <p>測驗數量</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="1000" data-purecounter-duration="1" class="purecounter"></span>
+            <p>老師數量</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>萬人評價</h2>
+          <p>聽聽他們怎麼說</p>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                  <h3>王大明</h3>
+                  <h4>教育雜誌創辦者</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                   各位小仙女~~~這是一個好評模板，不要看了，下面都是廢話。因為本仙女很懶，不想每個課程都寫好評，所以才模仿網友的好評模板。但是這個課程不管是老師還是內容都是本仙女喜歡的~~~如果不喜歡，本仙女上完課會很生氣，然後這個模板就會變成整篇都在吐槽，自然不會留下這個好評給各位親參考。本教育網站還是好棒棒的，來自一位懶省事的只愛上課不愛寫評論只想換折扣券的仙女
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                  <h3>林莎拉</h3>
+                  <h4>現役中二生</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    以前幾乎都沒有認真評價過，不知道浪費了多少次獲得折扣券的機會。聽說評價超過一百個字就會送，基本上每個星期都會來上課，統一評論，齊上上課實在是太方便了，根本停不下來，從此吃飯睡覺第一個想到的就是齊上，都是優秀教師，一開始還擔心，現在都習慣了，真心不錯的，測驗部分也很不錯的，物超所值，一次性買了十幾個測驗跟課程，大品牌值得信賴。
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                  <h3>陳水</h3>
+                  <h4>雜貨店老闆</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                     各位小仙女~~~這是一個好評模板，不要看了，下面都是廢話。因為本仙女很懶，不想每個課程都寫好評，所以才模仿網友的好評模板。但是這個課程不管是老師還是內容都是本仙女喜歡的~~~如果不喜歡，本仙女上完課會很生氣，然後這個模板就會變成整篇都在吐槽，自然不會留下這個好評給各位親參考。本教育網站還是好棒棒的，來自一位懶省事的只愛上課不愛寫評論只想換折扣券的仙女
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                  <h3>沙馬特</h3>
+                  <h4>退役中二生</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    以前幾乎都沒有認真評價過，不知道浪費了多少次獲得折扣券的機會。聽說評價超過一百個字就會送，基本上每個星期都會來上課，統一評論，齊上上課實在是太方便了，根本停不下來，從此吃飯睡覺第一個想到的就是齊上，都是優秀教師，一開始還擔心，現在都習慣了，真心不錯的，測驗部分也很不錯的，物超所值，一次性買了十幾個測驗跟課程，大品牌值得信賴。
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                  <h3>許約翰</h3>
+                  <h4>正在轉職中二生</h4>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                   經常上課，總有大量的課程要上，有很多的評語要寫！ 但是，總是寫評語花掉了我大量的時間和精力！ 所以在一段時間裡，我總是不去評價或者隨便寫寫！ 但是，我又總是覺得好像有點對不住那些辛苦教學的老師們。於是我寫下了一小段話，給我覺得能拿到我五星好評的老師的課程評價裡面以示感謝和尊敬！ 課程是性價比很高的，我每次都會看評價再上課的，雖然老師不一定是最好的，但在同等的價位裡面絕對是表現最棒的。
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+   <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Together Learning</h3>
+              <strong>Phone:</strong> 07-9699885<br>
+              <strong>Email:</strong> info@example.com<br>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Together Learning</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index">首頁</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="about">關於齊上</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/contact">聯絡我們</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">服務條款隱私聲明</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>學生回饋</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">學生心路歷程</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">老師課程評價</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>獲取最新資訊</h4>
+            <p>訂閱我們獲取最新資訊</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="button" value="訂閱">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Mentor</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/ -->
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

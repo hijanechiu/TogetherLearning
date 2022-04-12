@@ -5,6 +5,8 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,6 +47,13 @@ public class Student extends BaseEntity {
 	
 	@Column(name="point")
 	private Integer point;
+	
+	@Column(name="reset_password_token")
+	private String resetPasswordToken;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="auth_provider")
+	private AuthenticationProvider authenticationProvider;
 
 	public Integer getSid() {
 		return sid;
@@ -78,12 +87,12 @@ public class Student extends BaseEntity {
 		this.name = name;
 	}
 
-	public Date getBirthday() {
+	public Date getBirth() {
 		return birth;
 	}
 
-	public void setBirthday(Date birthday) {
-		this.birth = birthday;
+	public void setBirth(Date birth) {
+		this.birth = birth;
 	}
 
 	public String getPhone() {
@@ -118,14 +127,30 @@ public class Student extends BaseEntity {
 		this.point = point;
 	}
 
-	@Override
-	public String toString() {
-		return "Student [sid=" + sid + ", account=" + account + ", password=" + password + ", name=" + name
-				+ ", birthday=" + birth+ ", phone=" + phone + ", email=" + email + ", gender=" + gender + ", point="
-				+ point + "]";
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
 	}
 
-	
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
+	}
+
+	public AuthenticationProvider getAuthenticationProvider() {
+		return authenticationProvider;
+	}
+
+	public void setAuthenticationProvider(AuthenticationProvider authenticationProvider) {
+		this.authenticationProvider = authenticationProvider;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [sid=" + sid + ", account=" + account + ", password=" + password + ", name=" + name + ", birth="
+				+ birth + ", phone=" + phone + ", email=" + email + ", gender=" + gender + ", point=" + point
+				+ ", resetPasswordToken=" + resetPasswordToken + ", authenticationProvider=" + authenticationProvider
+				+ "]";
+	}
+
 	
 	
 }

@@ -15,6 +15,8 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="studenttest")
 @Component
@@ -35,6 +37,7 @@ public class Test {
 	private Integer grade;
 	
 	@Column(name="test_time")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm",timezone = "GMT+8")
 	private Date testTime;
 	
 

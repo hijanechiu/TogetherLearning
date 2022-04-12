@@ -15,6 +15,8 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 @Entity
 @Table(name="TLOrder")
@@ -30,6 +32,7 @@ public class TLOrder {
 	private Integer sid;
 	
 	@Column(name = "order_time")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm",timezone = "GMT+8")
 	private Date orderTime;
 	
 	@Column(name = "total_price")

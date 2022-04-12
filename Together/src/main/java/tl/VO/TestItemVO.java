@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 @Entity
 public class TestItemVO {
@@ -21,6 +23,7 @@ public class TestItemVO {
 	private String itemTitle;
 	
 	@Column(name="test_time")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm",timezone = "GMT+8")
 	private Date testTime;
 
 	public Integer getTid() {

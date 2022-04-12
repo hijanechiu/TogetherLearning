@@ -11,17 +11,24 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import tl.VO.DetailVO;
 import tl.VO.TestItemVO;
+import tl.entity.Contact;
 import tl.entity.Coupon;
 import tl.entity.OrderDetail;
 import tl.entity.Point;
 import tl.entity.Student;
+import tl.entity.Subscription;
 import tl.entity.TLOrder;
+import tl.repository.ContactRepository;
 import tl.repository.CouponRepository;
 import tl.repository.OrderDetailRepository;
 import tl.repository.OrderRepository;
+import tl.repository.SubcriptionRepository;
 import tl.repository.TestItemRepository;
+import tl.service.impl.ContactService;
+import tl.service.impl.EmailSenderService;
 import tl.service.impl.PointService;
 import tl.service.impl.StudentService;
+import tl.service.impl.SubScriptionService;
 
 @SpringBootTest
 class TogetherApplicationTests {
@@ -59,6 +66,11 @@ class TogetherApplicationTests {
 //		Student stu=sService.login(account, password);
 //		System.out.println(stu);
 //	}
+	
+	@Test
+	void updateResetPasswordToken() {
+	}
+	
 	
 	@Autowired
 	private OrderRepository oResp;
@@ -98,7 +110,7 @@ class TogetherApplicationTests {
 	
 	@Test
 	void findOrderBySid() {
-		List<TLOrder> list = oResp.findBySid(6);
+		List<TLOrder> list = oResp.findBySid(5);
 		for(TLOrder o:list) {
 		System.out.println(o);
 		}
@@ -148,5 +160,66 @@ class TogetherApplicationTests {
 		List<DetailVO> list = odRep.findDetailByOid(12);
 		System.out.println(list);
 	}
+	
+	@Autowired
+	private SubcriptionRepository subRep;
+	
+	@Test
+	void insertSubscription() {
+		Subscription sub=new Subscription();
+		sub.setEmail("abc@gamil");
+		sub.setSendTime(new Date());
+		sub.setSubscribeTime(new Date());
+		subRep.save(sub);
+	}
+	
+	@Autowired
+	private SubScriptionService subService;
+	
+	@Test
+	void sendEmail() {
+		String mail="hijanechiu@gmail.com";
+		subService.SendSubcriptionMail(mail);
+	}
+	
+	@Test
+	void findSubscriptor() {
+	Subscription subtor = subRep.findByEmail("hijanechiu@gmail.com");
+	System.out.println(subtor);
+	}
+	
+	@Autowired
+	private ContactRepository conRep;
+	
+	@Test
+	void savecontact() {
+		Contact contact=new Contact();
+		contact.setContactName("JAE");
+		contact.setEmail("123");
+		contact.setSubject("ABC");
+		contact.setMessage("123123");
+		contact.setSendTime(new Date());
+		Contact save = conRep.save(contact);
+		System.out.println(save.getContactId());
+	}
+	
+	@Autowired
+	private ContactService conService;
+	
+	@Test
+	void contactReply() {
+		Contact contact=new Contact();
+		contact.setContactName("JAE");
+		contact.setEmail("hijanechiu@gmail.com");
+		contact.setSubject("ABC");
+		contact.setMessage("123123");
+		conService.ContactReply(contact);
+		
+	}
+	
+	
+	
+	
+
 	
 }

@@ -13,6 +13,7 @@ import tl.VO.DetailVO;
 import tl.VO.TestItemVO;
 import tl.entity.Contact;
 import tl.entity.Coupon;
+import tl.entity.CourseRecords;
 import tl.entity.OrderDetail;
 import tl.entity.Point;
 import tl.entity.Student;
@@ -25,6 +26,7 @@ import tl.repository.OrderRepository;
 import tl.repository.SubcriptionRepository;
 import tl.repository.TestItemRepository;
 import tl.service.impl.ContactService;
+import tl.service.impl.CourseRecordsService;
 import tl.service.impl.EmailSenderService;
 import tl.service.impl.PointService;
 import tl.service.impl.StudentService;
@@ -217,9 +219,19 @@ class TogetherApplicationTests {
 		
 	}
 	
+	@Autowired
+	private CourseRecordsService courService;
 	
-	
-	
+	@Test
+	void saveCourse() { //沒有課程資料
+		CourseRecords c=new CourseRecords();
+		c.setRequiredPoints(100);
+		c.setStudentId(6);
+		c.setTutorName("BANANA");
+		c.setCourseId(1);
+		c.setCourseDate(new Date());
+		courService.insert(c);
+	}
 
 	
 }

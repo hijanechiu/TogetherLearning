@@ -129,5 +129,13 @@ public class Courses {
 	public void setCourseRecords(CourseRecords courseRecords) {
 		this.courseRecords = courseRecords;
 	}
+
+	@Override
+	public String toString() {
+		return "Courses [courseId=" + courseId + ", tutorId=" + tutorId + ", subjectId=" + subjectId + ", introTitle="
+				+ introTitle + ", introContents=" + introContents + ", introVideo=" + introVideo + ", introPhoto="
+				+ introPhoto + ", requiredPoints=" + requiredPoints + ", tutors=" + tutors + ", courseRecords="
+				+ courseRecords + "]";
+	}
 	
 }

@@ -1,15 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- 使用JSTL,此處使用FOR-EACH -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>線上真人家教</title>
+  <title>會員中心</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -30,7 +26,10 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/style27.css" rel="stylesheet">
+
+
+
 
   <!-- =======================================================
   * Template Name: Mentor - v4.7.0
@@ -46,16 +45,17 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
+     
       <img class=img src="assets/img/TL2.png">
       <h1 class="logo me-auto"><a href="/index">Together Learning</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar order-last order-xl-0">
         <ul>
           <li><a href="/index">首頁</a></li>
           <li><a href="/about">關於齊上</a></li>
-          <li class="dropdown"><a href="/subjects"><span>線上真人家教</span> <i class="bi bi-chevron-down"></i></a>
+         <li class="dropdown"><a href="/subjects"><span>線上真人家教</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="/courses?subjectId=3">國文</a></li>
               <li><a href="/courses?subjectId=1">英文</a></li>
@@ -65,58 +65,83 @@
           <li><a href="trainers.html">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
           <li><a href="/contact">聯絡我們</a></li>
-          <li><a href="/student">會員專區</a></li>
-          <a href="#" class=""><i class="bi bi-cart"></i></a>
-
+        <li><a href="/logout">登出</a></li>
+        <a href="#" class=""><i class="bi bi-cart"></i></a>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
+ 
       </nav><!-- .navbar -->
-
 
 
     </div>
   </header><!-- End Header -->
 
-  <main id="main" data-aos="fade-in">
-
+  <main id="main">
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
+    <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2> 一起學習 Together Learning </h2>
-        <p>不管你在找的是針對檢定考試的學測課程 、 指考課程 等等，
-          還是以紮實腳步提升的實力，我們都可以為你一對一打造屬於你的課程！</p>
+        <h2>此處會放公告</h2>
+       <!-- <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>-->
       </div>
     </div><!-- End Breadcrumbs -->
 
-    <!-- ======= Courses Section ======= -->
-    <section id="courses" class="courses">
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
       <div class="container" data-aos="fade-up">
-        <div class="row" data-aos="zoom-in" data-aos-delay="100">
 
+  
+          <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="studentbox">
+              <h3>購買紀錄</h3>
+              <ul>
+                <li><a href="/order">查詢訂單</a></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
 
-		<!-- ${subjectList}為 controller的mav.addObject("subjectList", subjectDataList)當中的key -->
-		<c:forEach  items="${subjectList}"  var="data"> 
-	
+          <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+            <div class="studentbox">
+              <h3>個人資料</h3>
+              <ul>
+                <li><a href="/update_info">修改基本資料</a></li>
+                <li><a href="/update_password">修改密碼</a></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
 
+          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+            <div class="studentbox">
+              <h3>我的點數</h3>
+              <ul>
+                <li><a href="/point">點數查詢</a></li>
+                <li><a href="/coupon">折扣券查詢</a></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
 
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-        	  <form action="/courses" method="post">
-                <div class="course-item">
-                    <div class="course-content">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <!-- action="/courses"==>指的是controller裡面的mapping路徑 -->
-	                   			<input type="submit" value = "${ data.subject }" class="submit">
-					            <input type="hidden" value = "${ data.subjectId }" name="subjectId">
-                        </div>
-					    <input type="image" src="${ data.subjectPhoto }" class="img-fluid" value = "${ data.subjectId }" name="subjectId">
-                  	</div>
-                  </div>
-	            </form>             
-              </div> <!-- End Course Item-->
-		</c:forEach>		
+          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+            <div class="studentbox">
+              <h3>我的學習</h3>
+              <ul>
+                <li><a href="/myschedule">我的課表</a></li>
+                <li><a href="/test">測驗紀錄</a></li>
+                <li></li>
+              </ul>
+       
+            </div>
+          </div>
+
         </div>
+
       </div>
-    </section><!-- End Courses Section -->
+    </section><!-- End Pricing Section -->
 
   </main><!-- End #main -->
 
@@ -131,7 +156,6 @@
             <h3>Together Learning</h3>
               <strong>Phone:</strong> 07-9699885<br>
               <strong>Email:</strong> info@example.com<br>
-            </p>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
@@ -156,7 +180,7 @@
             <h4>獲取最新資訊</h4>
             <p>訂閱我們獲取最新資訊</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="訂閱">
+              <input type="email" name="email"><input type="button" value="訂閱">
             </form>
           </div>
 
@@ -187,6 +211,7 @@
       </div>
     </div>
   </footer><!-- End Footer -->
+
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

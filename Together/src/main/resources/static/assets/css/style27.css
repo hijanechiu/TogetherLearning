@@ -48,7 +48,6 @@ td{
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
-
 .back-to-top {
   position: fixed;
   visibility: hidden;
@@ -495,12 +494,6 @@ section {
   padding: 30px 0;
   color: #fff;
 }
-.breadcrumbstest {
-
-  background: #5fcf80;
-  padding: 20px 0 15px 0;
-  color: #fff;
-}
 @media (max-width: 992px) {
   .breadcrumbs {
     margin-top: 63px;
@@ -676,7 +669,6 @@ section {
 .courses .course-item {
   border-radius: 5px;
   border: 1px solid #eef0ef;
-  margin-bottom: 10px;
 }
 .courses .course-content {
   padding: 15px;
@@ -696,30 +688,23 @@ section {
   font-size: 14px;
   color: #777777;
 }
-
+.courses .course-content h4 {
+  font-size: 14px;
+  background: #5fcf80;
+  padding: 7px 14px;
+  color: #fff;
+  margin: 0;
+}
 .courses .course-content .price {
   margin: 0;
   font-weight: 700;
   font-size: 18px;
   color: #37423b;
 }
-
-.courses .course-content .submit{
-
-  font-size: 25px;
-  color: #0080ff;
-  height:40px;
-  border: 1px solid #fff;
-  background-color: #fff;
-
-}
 .courses .trainer {
   padding-top: 15px;
   border-top: 1px solid #eef0ef;
-  display: flex;
-  justify-content: flex-end;
 }
-
 .courses .trainer .trainer-profile img {
   max-width: 50px;
   border-radius: 50px;
@@ -734,167 +719,6 @@ section {
   font-size: 18px;
   color: #657a6d;
 }
-
-.btn {
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  height:45px;
-  text-transform: capitalize;
-  padding: 15px 40px;
-  border-radius: 0;
-  font-weight: 500;
-  border: 0;
-  position: relative;
-  z-index: 1;
-  transition: .2s ease;
-  overflow: hidden;
-}
-.btn_cd {
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  text-transform: capitalize;
-  padding: 15px 40px;
-  border-radius: 5%;
-  font-weight: 500;
-  border: 0;
-  position: relative;
-  z-index: 1;
-  background: #5fcf80;
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.btn::before {
-  position: absolute;
-  content: "";
-  height: 80%;
-  width: 100%;
-  left: 0;
-  bottom: 10%;
-  z-index: -1;
-  transition: -webkit-transform .2s ease-in-out;
-  transition: transform .2s ease-in-out;
-  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
-  -webkit-transform-origin: top;
-          transform-origin: top;
-  -webkit-transform: scaleY(0);
-          transform: scaleY(0);
-}
-
-.btn:focus {
-  outline: 0;
-  box-shadow: none !important;
-}
-
-.btn:active {
-  box-shadow: none;
-}
-
-.btn:hover::before {
-  -webkit-transform: scaleY(1);
-          transform: scaleY(1);
-  -webkit-transform-origin: bottom;
-          transform-origin: bottom;
-}
-
-.btn-sm {
-  font-size: 14px;
-  padding: 10px 35px;
-}
-
-.btn-xs {
-  font-size: 12px;
-  padding: 5px 15px;
-}
-
-.btn-primary {
-  background: #5fcf80;
-  color: #fff;
-}
-
-.btn-primary::before {
-  background: #fff;
-}
-
-.btn-primary:active {
-  background: #5fcf80 !important;
-  color: #5fcf80;
-}
-
-.btn-primary:active::before {
-  height: 80%;
-}
-
-.btn-primary:hover {
-  background: #5fcf80;
-  color: #5fcf80;
-}
-
-.btn-primary:not(:disabled):not(.disabled).active,
-.btn-primary:not(:disabled):not(.disabled):active,
-.show > .btn-primary.dropdown-toggle {
-  color: #fff;
-  background-color: #5fcf80;
-  border-color: #5fcf80;
-}
-
-.btn-secondary {
-  background: #fff;
-  color: #5fcf80;
-  border: 1px solid #fff;
-}
-
-.btn-secondary::before {
-  background: #5fcf80;
-}
-
-.btn-secondary:active {
-  background: #5fcf80;
-  color: #fff;
-  border: 1px solid #fff;
-}
-
-.btn-secondary:hover {
-  background: #fff;
-  color: #fff;
-  border: 1px solid #fff;
-}
-
-.btn-primary-outline {
-  border: 1px solid #5fcf80;
-  color: #5fcf80;
-  background: transparent;
-}
-
-.btn-primary-outline::before {
-  background: #fff;
-}
-
-.btn-primary-outline:hover {
-  background: #5fcf80;
-  color: #5fcf80;
-}
-
-.btn-primary-outline:active {
-  background: #5fcf80;
-  color: #fff;
-}
-
-body {
-  background-color: #fff;
-  overflow-x: hidden;
-}
-
-::-moz-selection {
-  background: #5fcf80;
-  color: #fff;
-}
-
-::selection {
-  background: #5fcf80;
-  color: #fff;
-}
-
 
 /*--------------------------------------------------------------
 # Trainers
@@ -1029,70 +853,11 @@ body {
 }
 
 /*--------------------------------------------------------------
-# Testing
---------------------------------------------------------------*/
-table.test-table{
-	width: 350px;
-}
-
-tr.test-titleline{
-	background-color: #5fcf80;
-	border: 1px;
-	border-color: #5fcf80;
-	
-}
-
-td.test-title{
-	padding: 5px 150px;
-	color: #ffff;
-	border: 1px;
-	border-color: #5fcf80;
-}
-
-p.testTitle{
-	font-size: 25px;
-}
-
-ul.pagination{
-	margin:auto;
-	position: relative;
-}
-
-input.testSubmit{
-	background-color: #5fcf80;
-	color: #ffff;
-	border: 1px;
-	border-color: #5fcf80;
-	border-radius: 5%;
-	padding: 5px 8px;
-}
-
-/*----------------------------------------------------------------*/
-
-.list-group-item{
-
-	color: #808080;
-	border: 1px;
-	border-color: #5fcf80;
-	
-	
-}
-
-.section-sm {
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
-img {
-  vertical-align: middle;
-  border: 0;
-}
-/*--------------------------------------------------------------
 # Cource Details
 --------------------------------------------------------------*/
 .course-details h3 {
   font-size: 24px;
-  margin: 15px 0 15px 0;
+  margin: 30px 0 15px 0;
   font-weight: 700;
   position: relative;
   padding-bottom: 10px;
@@ -1121,7 +886,6 @@ img {
   background: #f6f7f6;
   padding: 10px 15px;
   margin-bottom: 15px;
-
 }
 .course-details .course-info h5 {
   font-weight: 400;
@@ -1190,79 +954,26 @@ img {
     background: #5fcf80;
   }
 }
-/*--------------------------------------------------------------
-# datepicker
---------------------------------------------------------------*/
-.datepicker {
-  height: 30px;
-  margin-right: 10px;
-  outline: none;
-  background-color: #ffffff;
-  border: 1px solid #00c768;
-  border-radius: 5px;
-  color: rgb(26, 26, 26);
-  padding-left: 12px;
-  width: 290px;
-}
 
-.time{
-   height: 30px;
-  margin-right: 10px;
-  outline: none;
-  background-color: #ffffff;
-  border: 1px solid #00c768;
-  border-radius: 5px;
-  color: rgb(26, 26, 26);
-  padding-left: 12px;
-  width: 290px;
-}
-
-.send{
-  width: 50px;
-  height: 30px;
-  background-color: #00c768;
-  color: #fff;
-  padding: 4px 5px;
-  border: 1px solid #00c768;
-  border-radius: 5px;
-
-}
 /*--------------------------------------------------------------
 # Events
 --------------------------------------------------------------*/
-.scheduleBtn{
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  color:#fff;
-  height:30px;
-  width:70px;
-  border-radius: 0;
-  border: 0px;
-  margin:5px;
-  background-color: #72b4c7;
-
-}
-
-.scheduleBtn2{
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  color:#fff;
-  height:30px;
-  width:70px;
-  border-radius: 0;
-  border: 0px;
-  margin:5px;
-  background-color: #d98c86;
-
-}
-
-
 .events .card {
-  width: 100%;
   border: 0;
   padding: 0 30px;
-  margin: 20px;
-  /* position: relative; */
+  margin-bottom: 60px;
+  position: relative;
+}
+.events .card-img {
+  width: calc(100% + 60px);
+  margin-left: -30px;
+  overflow: hidden;
+  z-index: 9;
+  border-radius: 0;
+}
+.events .card-img img {
+  max-width: 100%;
+  transition: all 0.3s ease-in-out;
 }
 .events .card-body {
   z-index: 10;
@@ -1270,34 +981,15 @@ img {
   border-top: 4px solid #fff;
   padding: 30px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  /* margin-top: -60px; */
+  margin-top: -60px;
   transition: 0.3s;
 }
 .events .card-title {
-  font-size: 40px;
   font-weight: 700;
   text-align: center;
   margin-bottom: 20px;
-  color: #5fcf80;
 }
-
-.events .card-table {
-  width: 100%;
-  text-align: center;
-}
-
-.events .row-title{
-  border-color: #5fcf80;
-  font-size: 20px;
-  background-color: #5fcf80;
-  color: #ffffff;
-}
-
-.events .row-details{
-  font-size: 18px;
-}
-
-/* .events .card-title a {
+.events .card-title a {
   color: #37423b;
   transition: 0.3s;
 }
@@ -1313,8 +1005,10 @@ img {
 }
 .events .read-more a:hover {
   color: #5fcf80;
-} */
-
+}
+.events .card:hover img {
+  transform: scale(1.1);
+}
 .events .card:hover .card-body {
   border-color: #5fcf80;
 }
@@ -1333,16 +1027,82 @@ img {
   border-radius: 0;
   position: relative;
   overflow: hidden;
+  height:400px
+}
+.pricing .box1 {
+  margin-top: -30px;
+  padding: 20px;
+  background: #fff;
+  text-align: left;
+  border: 1px solid #a1c2ab;
+  border-radius: 5;
+  position: relative;
+  overflow: hidden;
+  height:640px
+}
+.pricing .box2 {
+  margin-top: -30px;
+  padding: 20px;
+  background: #fff;
+  text-align: left;
+  border: 1px solid #a1c2ab;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+  height:520px
+}
+.pricing .studentbox {
+  padding: 20px;
+  background: #fff;
+  text-align: center;
+  border: 1px solid #a1c2ab;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+  height:300px
+}
+
+
+.pricing .pwdbox{
+  padding: 20px;
+  background: #fff;
+  text-align: center;
+  border: 1px solid #a1c2ab;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+  height:300px
+}
+.pricing .forgetpwdbox{
+  padding: 20px;
+  background: #fff;
+  text-align: center;
+  border: 1px solid #a1c2ab;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+  height:230px
+}
+.pricing .resetpwdbox{
+  padding: 20px;
+  background: #fff;
+  text-align: center;
+  border: 1px solid #a1c2ab;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
   height:250px
 }
+
 .pricing h3 {
   font-weight: 400;
   margin: -20px -20px 20px -20px;
   padding: 20px 15px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: #fff;
   background: #76d893;
+  text-align: center
 }
 .pricing h4 {
   font-size: 36px;
@@ -1416,8 +1176,16 @@ img {
   background: #5fcf80;
   color: #fff;
 }
-
-
+.pricing a{
+  
+  display: inline-block;
+  width: 16rem;
+}
+.pricing a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  color: #eacf4f;
+}
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -1519,15 +1287,16 @@ img {
 .contact .php-email-form textarea {
   padding: 10px 12px;
 }
-.contact .php-email-form button[type=submit] {
+.contact input[type=button] {
   background: #5fcf80;
   border: 0;
   padding: 10px 35px;
   color: #fff;
   transition: 0.4s;
   border-radius: 50px;
+  margin-top:15px;
 }
-.contact .php-email-form button[type=submit]:hover {
+.contact input[type=button]:hover {
   background: #3ac162;
 }
 @-webkit-keyframes animate-loading {
@@ -1639,7 +1408,7 @@ img {
   padding: 4px 8px;
   width: calc(100% - 100px);
 }
-#footer .footer-newsletter form input[type=submit] {
+#footer .footer-newsletter form input[type=button] {
   position: absolute;
   top: -1px;
   right: -1px;
@@ -1654,7 +1423,7 @@ img {
   border-radius: 50px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
-#footer .footer-newsletter form input[type=submit]:hover {
+#footer .footer-newsletter form input[type=button]:hover {
   background: #3ac162;
 }
 #footer .credits {

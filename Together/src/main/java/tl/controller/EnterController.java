@@ -13,38 +13,25 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 public class EnterController {
 
-//	
-//	@GetMapping("/{url}")
-//	public String url(@PathVariable("url") String url,Model m) {
-//		return url;
-//	}
-//	
 	@GetMapping("/{url}")
 	public String thyurl(@PathVariable("url") String url) {
 		return "th/"+url;
 	}
 	
-	
-	@GetMapping("/testsubjects")
-	public String jspurl() {
-		return "jsp/testSubjects";
-	}
-	
-	
 	@GetMapping("/update_info")
 	public String updateInfo() {
-		return "updateInfo";
+		return "th/updateInfo";
 	}
 	
 	@GetMapping("/update_password")
 	public String updatepwd() {
-		return "updatepwd";
+		return "th/updatepwd";
 	}
 	
 	@GetMapping("/order_detail/{oid}")
 	public String orderDetail(@PathVariable("oid") Integer oid,Model m) {
 		m.addAttribute("oid", oid);
-		return "orderDetail";
+		return "th/orderDetail";
 	}
 	
 	

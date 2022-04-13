@@ -36,7 +36,7 @@ public class Point {
 	
 	@Column(name="changed_time")//這邊資料表欄位跟汶珊不一樣
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm",timezone = "GMT+8")
-	private Date changedDate;
+	private Date changedTime;
 //	private Date changedDate;
 
 	public Integer getPointRecordId() {
@@ -71,19 +71,21 @@ public class Point {
 		this.changedReason = changedReason;
 	}
 
-	public Date getChangedDate() {
-		return changedDate;
+	public Date getChangedTime() {
+		return changedTime;
 	}
 
-	public void setChangedDate(Date changedDate) {
-		this.changedDate = changedDate;
+	public void setChangedTime(Date changedTime) {
+		this.changedTime = changedTime;
 	}
 
 	@Override
 	public String toString() {
 		return "Point [pointRecordId=" + pointRecordId + ", sid=" + sid + ", points=" + points + ", changedReason="
-				+ changedReason + ", changedDate=" + changedDate + "]";
+				+ changedReason + ", changedTime=" + changedTime + "]";
 	}
+
+	
 
 	
 	

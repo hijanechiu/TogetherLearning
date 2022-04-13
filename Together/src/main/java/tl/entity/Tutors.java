@@ -88,5 +88,6 @@ public class Tutors {
 	public void setMeetingUrl(String meetingUrl) {
 		this.meetingUrl = meetingUrl;
 	}
+
 	
 }

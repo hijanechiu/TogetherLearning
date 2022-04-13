@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-@Entity	@Table(name = "subjects")
+@Entity	@Table(name = "subject")
 @Component
 public class Subjects {
 

@@ -71,7 +71,7 @@ public class StudentController extends BaseController {
 		String account=user.getUsername();
 		Integer sid=sService.getIdByAccount(account);
 		m.addAttribute("sid", sid);
-		return "student";
+		return "th/student";
 	}
 	
 	@ResponseBody
@@ -117,9 +117,9 @@ public class StudentController extends BaseController {
 	    model.addAttribute("token", token);
 	    if (student == null) {
 	        model.addAttribute("message", "無效的驗證碼,請重新請求發送驗證信");
-	        return "forgetpwd";
+	        return "th/forgetpwd";
 	    }
-	    return "resetpwdForm";
+	    return "th/resetpwdForm";
 	}
 	
 	@ResponseBody

@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Together Learning - My Schedule</title>
+  <title>我的課表</title>
 
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -111,14 +111,14 @@
     <div class="container d-flex align-items-center">
 
       <img class=img src="assets/img/TL2.png">
-      <h1 class="logo me-auto"><a href="齊上首頁.html">Together Learning</a></h1>
+      <h1 class="logo me-auto"><a href="/index">Together Learning</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a href="齊上首頁.html">首頁</a></li>
-          <li><a href="about.html">關於齊上</a></li>
+          <li><a href="/index">首頁</a></li>
+          <li><a href="/about">關於齊上</a></li>
           <li class="dropdown"><a href="/subjects"><span>線上真人家教</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="/courses?subjectId=3">國文</a></li>
@@ -128,8 +128,8 @@
           </li>
           <li><a href="trainers.html">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
-          <li><a href="contact.html">聯絡我們</a></li>
-          <li><a href="登入.html">登入</a></li>
+          <li><a href="/contact">聯絡我們</a></li>
+          <li><a href="/logout">登出</a></li>
           <a href="#" class=""><i class="bi bi-cart"></i></a>
 
         </ul>
@@ -216,16 +216,16 @@
 
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>Together Learning</h3>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Phone:</strong> 07-9699885<br>
               <strong>Email:</strong> info@example.com<br>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Together Learning</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">首頁</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">關於齊上</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">聯絡我們</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/index">首頁</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/about">關於齊上</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/contact">聯絡我們</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">服務條款隱私聲明</a></li>
             </ul>
           </div>

@@ -1,11 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- 使用JSTL,此處使用FOR-EACH -->
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>註冊</title>
+  <title>Together Learning - Test Center</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -20,18 +24,15 @@
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
- 
-
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-
+  <link href="assets/css/style2.css" rel="stylesheet">
+  <link href="assets/css/themify-icons.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Mentor - v4.7.0
@@ -47,98 +48,109 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-     
       <img class=img src="assets/img/TL2.png">
-      <h1 class="logo me-auto"><a href="/index">Together Learning</a></h1>
+      <h1 class="logo me-auto"><a href="齊上首頁.html">Together Learning</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-xl-0">
+      <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a href="/index">首頁</a></li>
-          <li><a href="/about">關於齊上</a></li>
-          <li><a href="courses.html">線上真人家教</a></li>
+          <li><a href="齊上首頁.html">首頁</a></li>
+          <li><a href="about.html">關於齊上</a></li>
+          <li class="dropdown"><a href="/subjects"><span>線上真人家教</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/courses?subjectId=3">國文</a></li>
+              <li><a href="/courses?subjectId=1">英文</a></li>
+              <li><a href="/courses?subjectId=2">數學</a></li>
+            </ul>
+          </li>
           <li><a href="trainers.html">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
-          <li><a href="/contact">聯絡我們</a></li>
-          <li><a href="/login">登入</a></li>
-         
+          <li><a href="contact.html">聯絡我們</a></li>
+          <li><a href="登入.html">登入</a></li>
+          <a href="#" class=""><i class="bi bi-cart"></i></a>
+
         </ul>
-        <a href="#" class=""><i class="bi bi-cart"></i></a>
         <i class="bi bi-list mobile-nav-toggle"></i>
- 
       </nav><!-- .navbar -->
+
+
 
     </div>
   </header><!-- End Header -->
 
-  <main id="main">
+  <main id="main" data-aos="fade-in">
+
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs" data-aos="fade-in">
+    <div class="breadcrumbs">
       <div class="container">
-        <h2>端午節特價活動</h2>
-       <p>點數買滿兩千送一百點</p>
+        <h2> 測驗中心 Together Testing </h2>
+        <p>囊括統整各版本題型，配合個人需求提供多樣化的選擇，讓家長及學生不再為版本不同而操心。
+        	輕鬆省時、方便取用，自行量身訂造個人化練習卷。</p>
       </div>
     </div><!-- End Breadcrumbs -->
 
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
-          <div class="row">
-          <div class="col-lg-4 col-md-6 offset-4">
-            <div class="box1">
-              <h3>註冊</h3>
-              <form id="form-registry" name="form-registry" class="">
-                <div class="form-group mt-2">
-				<label>帳號：</label>
-				<input type="text" class="form-control" name="account" id="account" placeholder="請輸入帳號" required="required">
-				
-                </div>
-                <div class="form-group mt-2">
-                <label>密碼：</label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="請輸入密碼" required="required">
-                </div>
-                <div class="form-group mt-2">
-                <label>姓名：</label>
-                    <input type="text" class="form-control" name="studentName" id="name" placeholder="請輸入姓名" required="required">
-                  </div>
-                  
-                  <div class="form-group mt-2">
-								<label class="col-md-2 control-label">性别：</label>
-								<div class="col-md-8">
-									<label class="radio-inline">
-										<input id="gender-male" type="radio" name="gender" value="0">男
-									</label>
-									<label class="radio-inline">
-										<input id="gender-female" type="radio" name="gender" value="1">女
-									</label>
-								</div>
-							</div>
-                  <div class="form-group mt-2">
-                    <label>生日：</label>
-                    <input type="date" class="form-control" name="birth" id="birth" required="required">
-                  </div>
-                  <div class="form-group mt-2">
-                   <label>電話：</label>
-                    <input type="text" class="form-control" name="phone" id="phone" placeholder="請輸入電話" required="required">
-                  </div>
-                  <div class="form-group mt-2">
-                  	<label>信箱：</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="請輸入信箱" required="required">
-                  </div>
-                <div class="form-group mt-2">
-                <div class="text-center mt-3" >
-                <input id="btn-registry" type="button" class="btn btn-outline-secondary" value="提交"/>
-                 </div>
-                </div>
-              </form>
-  
-            </div>
-          </div>
-        </div>
-
+<!-- section -->
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mb-4">
+        <!-- course thumb -->
+        <img src="assets/img/testing.jpg" class="img-fluid w-100">
       </div>
-    </section><!-- End Pricing Section -->
+    </div>
+    <!-- course info -->
+    <div class="row align-items-center mb-5">
+      <div class="col-xl-3 order-1 col-sm-6 mb-4 mb-xl-0">
+        <h2>Photography</h2>
+      </div>
+      <div class="col-xl-6 order-sm-3 order-xl-2 col-12 order-2">
+        <ul class="list-inline text-xl-center">
+          <li class="list-inline-item mr-4 mb-3 mb-sm-0">
+            <div class="d-flex align-items-center">
+              <i class="ti-book text-primary icon-md mr-2"></i>
+              <div class="text-left">
+                <h6 class="mb-0">SUBJECT</h6>
+                <p class="mb-0">Math</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-inline-item mr-4 mb-3 mb-sm-0">
+            <div class="d-flex align-items-center">
+              <i class="ti-alarm-clock text-primary icon-md mr-2"></i>
+              <div class="text-left">
+                <h6 class="mb-0">DURATION</h6>
+                <p class="mb-0">1 Hour</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-inline-item mr-4 mb-3 mb-sm-0">
+            <div class="d-flex align-items-center">
+              <i class="ti-money text-primary icon-md mr-2"></i>
+              <div class="text-left">
+                <h6 class="mb-0">POINTS</h6>
+                <p class="mb-0">Take: 150 P</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-xl-3 text-sm-right text-left order-sm-2 order-3 order-xl-3 col-sm-6 mb-4 mb-xl-0">
+        <a href="#" class="btn btn-primary">開始測驗</a>
+      </div>
+      <!-- border -->
+      <div class="col-12 mt-4 order-4">
+        <div class="border-bottom border-primary"></div>
+      </div>
+    </div>
+    <!-- course details -->
+    <div class="row">
+      <div class="col-12 mb-4">
+        <h3>關於本</h3>
+        <p>數學能力試驗係為齊上與各專院教師共同合作製作之測驗，可供各階段學生測數學的能力，本測驗成績除了讓學生能夠定期檢測學習成果，也將作為老師分析學生學習狀況的依據，以便因材施教、適當做出滾動式調整。高中生亦可登錄學習歷程，豐富學習軌跡！<br>使用本測驗中心不必擔心今天做的題目之前做過，上萬個數位題型提供豐富多樣的題目，吸引學童的目光並樂於練習作答，每次都保有新鮮感，新的挑戰，不會厭倦 !!並寫囊括統整各版本題型，配合個人需求提供多樣化的選擇，讓家長及學生不再為版本不同而操心。輕鬆省時、方便取用，自行量身訂造個人化練習卷。</p>
+      </div>
+    </div>
+  </section>
 
   </main><!-- End #main -->
 
@@ -151,17 +163,17 @@
 
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>Together Learning</h3>
-              <strong>Phone:</strong> 07-9699885<br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
               <strong>Email:</strong> info@example.com<br>
-         
+            </p>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Together Learning</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="/index">首頁</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="/about">關於齊上</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="/contact">聯絡我們</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">首頁</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">關於齊上</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">聯絡我們</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">服務條款隱私聲明</a></li>
             </ul>
           </div>
@@ -178,7 +190,7 @@
             <h4>獲取最新資訊</h4>
             <p>訂閱我們獲取最新資訊</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="button" value="訂閱">
+              <input type="email" name="email"><input type="submit" value="訂閱">
             </form>
           </div>
 
@@ -209,59 +221,21 @@
       </div>
     </div>
   </footer><!-- End Footer -->
-   <script type="text/javascript" th:inline="javascript">
-		$("#btn-registry").click(function() {
-				var username=$("#account").val();
-				var password=$("#password").val();
-				var name=$("#studentName").val();
-				var birth = $("#birth").val();
-				var phone = $("#phone").val();    
-				var email = $("#email").val();
-				var emailRegxp = /[\w-]+@([\w-]+\.)+[\w-]+/;
-				if(username=="" || password==""|| birth=="" || phone=="" || email=="" || name==""){
-					alert("請填寫完整資訊");
-					return;
-				}else if((!document.getElementById("gender-male").checked)&&(!document.getElementById("gender-female").checked)){
-					alert("請選擇性別")
-					return;
-				}else if(emailRegxp.test(email) != true){
-					alert('電子信箱格式錯誤');
-					$('#email').focus();
-					$('#email').select();
-					return false;
-				}
-			$.ajax({
-				url : "/reg",
-				type : "POST",
-				data : $("#form-registry").serialize(),
-				dataType : "JSON",
-				success : function(json) {
-					if (json.state == 200) {
-						alert("註冊成功,請重新登入")
-						location.href="/index";
-					}else{
-						alert(json.message)}
-				},
-				error : function(xhr) {
-					alert("註冊時產生錯誤，請聯絡客服");
-				}
-			});
-		});
-	</script>
-  
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  
-   <!-- Vendor JS Files -->
+
+
+  <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/bootstrap/bootstrap.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-	  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 
 </body>
 

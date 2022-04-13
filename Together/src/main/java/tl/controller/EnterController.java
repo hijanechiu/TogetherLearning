@@ -1,7 +1,5 @@
 package tl.controller;
 
-
-
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,18 +9,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-
-
-
 @SessionAttributes(names={"sid"})
 @Controller
 public class EnterController {
 
-	
+//	
+//	@GetMapping("/{url}")
+//	public String url(@PathVariable("url") String url,Model m) {
+//		return url;
+//	}
+//	
 	@GetMapping("/{url}")
-	public String url(@PathVariable("url") String url,Model m) {
-		return url;
+	public String thyurl(@PathVariable("url") String url) {
+		return "th/"+url;
 	}
+	
+	
+	@GetMapping("/testsubjects")
+	public String jspurl() {
+		return "jsp/testSubjects";
+	}
+	
 	
 	@GetMapping("/update_info")
 	public String updateInfo() {

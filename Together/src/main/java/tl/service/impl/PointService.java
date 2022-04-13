@@ -14,6 +14,7 @@ public class PointService {
 	@Autowired
 	private PointRepository pResp;
 	
+	//查看點數異動紀錄
 	public List<Point> getPointBySid(Integer sid){
 		List<Point> list = pResp.findBySid(sid);
 		if(!list.isEmpty()) {
@@ -23,6 +24,10 @@ public class PointService {
 		}
 	}
 	
+	//--------------------------------------新增點數異動紀錄(汶珊)-------------------------------------------	
+	public Point insert(Point points) {
+		return pResp.save(points);		
+	}
 	
 	
 }

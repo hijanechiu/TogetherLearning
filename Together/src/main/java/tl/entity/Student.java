@@ -23,6 +23,7 @@ public class Student extends BaseEntity {
 	@Column(name="student_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer sid;
+//	private int studentId;
 	
 	@Column(name="account")
 	private String account;
@@ -31,7 +32,8 @@ public class Student extends BaseEntity {
 	private String password; 
 	
 	@Column(name="student_name")
-	private String name;
+	private String studentName;
+//	private String studentName;
 	
 	@Column(name="birth")
 	private Date birth;
@@ -46,7 +48,8 @@ public class Student extends BaseEntity {
 	private Integer gender; //0為男1為女
 	
 	@Column(name="point")
-	private Integer point;
+	private Integer studentPoints;
+//	private int studentPoints;
 	
 	@Column(name="reset_password_token")
 	private String resetPasswordToken;
@@ -79,12 +82,12 @@ public class Student extends BaseEntity {
 		this.password = password;
 	}
 
-	public String getName() {
-		return name;
+	public String getStudentName() {
+		return studentName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
 	}
 
 	public Date getBirth() {
@@ -119,12 +122,12 @@ public class Student extends BaseEntity {
 		this.gender = gender;
 	}
 
-	public Integer getPoint() {
-		return point;
+	public Integer getStudentPoints() {
+		return studentPoints;
 	}
 
-	public void setPoint(Integer point) {
-		this.point = point;
+	public void setStudentPoints(Integer studentPoints) {
+		this.studentPoints = studentPoints;
 	}
 
 	public String getResetPasswordToken() {
@@ -145,11 +148,12 @@ public class Student extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Student [sid=" + sid + ", account=" + account + ", password=" + password + ", name=" + name + ", birth="
-				+ birth + ", phone=" + phone + ", email=" + email + ", gender=" + gender + ", point=" + point
-				+ ", resetPasswordToken=" + resetPasswordToken + ", authenticationProvider=" + authenticationProvider
-				+ "]";
+		return "Student [sid=" + sid + ", account=" + account + ", password=" + password + ", studentName="
+				+ studentName + ", birth=" + birth + ", phone=" + phone + ", email=" + email + ", gender=" + gender
+				+ ", studentPoints=" + studentPoints + ", resetPasswordToken=" + resetPasswordToken
+				+ ", authenticationProvider=" + authenticationProvider + "]";
 	}
+
 
 	
 	

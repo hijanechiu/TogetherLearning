@@ -1,11 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- 使用JSTL,此處使用FOR-EACH -->
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>註冊</title>
+  <title>Together Learning - Tutor</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -27,11 +31,6 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
- 
-
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-
 
   <!-- =======================================================
   * Template Name: Mentor - v4.7.0
@@ -47,98 +46,94 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-     
       <img class=img src="assets/img/TL2.png">
-      <h1 class="logo me-auto"><a href="/index">Together Learning</a></h1>
+      <h1 class="logo me-auto"><a href="齊上首頁.html">Together Learning</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-xl-0">
+      <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a href="/index">首頁</a></li>
-          <li><a href="/about">關於齊上</a></li>
-          <li><a href="courses.html">線上真人家教</a></li>
+          <li><a href="齊上首頁.html">首頁</a></li>
+          <li><a href="about.html">關於齊上</a></li>
+          <li class="dropdown"><a href="/subjects"><span>線上真人家教</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/courses?subjectId=3">國文</a></li>
+              <li><a href="/courses?subjectId=1">英文</a></li>
+              <li><a href="/courses?subjectId=2">數學</a></li>
+            </ul>
+          </li>
           <li><a href="trainers.html">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
-          <li><a href="/contact">聯絡我們</a></li>
-          <li><a href="/login">登入</a></li>
-         
+          <li><a href="contact.html">聯絡我們</a></li>
+          <li><a href="登入.html">登入</a></li>
+          <a href="#" class=""><i class="bi bi-cart"></i></a>
+
         </ul>
-        <a href="#" class=""><i class="bi bi-cart"></i></a>
         <i class="bi bi-list mobile-nav-toggle"></i>
- 
       </nav><!-- .navbar -->
+
+
 
     </div>
   </header><!-- End Header -->
 
-  <main id="main">
+  <main id="main" data-aos="fade-in">
+
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs" data-aos="fade-in">
+    <div class="breadcrumbs">
       <div class="container">
-        <h2>端午節特價活動</h2>
-       <p>點數買滿兩千送一百點</p>
+        <h2>${subjects.subject}</h2>
+        <p>${subjects.subjectIntroContents}</p>
       </div>
     </div><!-- End Breadcrumbs -->
-
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
+    
+    <!-- ======= Courses Section ======= -->
+    <section id="courses" class="courses">
       <div class="container" data-aos="fade-up">
-          <div class="row">
-          <div class="col-lg-4 col-md-6 offset-4">
-            <div class="box1">
-              <h3>註冊</h3>
-              <form id="form-registry" name="form-registry" class="">
-                <div class="form-group mt-2">
-				<label>帳號：</label>
-				<input type="text" class="form-control" name="account" id="account" placeholder="請輸入帳號" required="required">
-				
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+
+
+		<!-- ${courseList}為 controller的mav.addObject("courseList", courseDataList);當中的key -->
+		<c:forEach  items="${courseList}"  var="data"> 
+
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+            <div class="course-item">
+              <img src="${data.introPhoto}" class="img-fluid" alt="...">
+              <div class="course-content">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                <!-- data本身是courses，而tutors放在courses裡面，因此要多進去一層.tutors才能找到tutorName -->
+                  <h3>${data.tutors.tutorName}</h3>
+                  <p class="price">${data.requiredPoints}P/H</p>
                 </div>
-                <div class="form-group mt-2">
-                <label>密碼：</label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="請輸入密碼" required="required">
+
+                <p>學歷：${data.tutors.tutorEdu}</p>
+                <p>教學經驗：${data.tutors.tutorExp}</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                    <form action="/courseDetail" method="post">
+	                    <input type="submit" class="btn btn-primary btn-sm" value = "了解更多">
+	                    <input type="hidden" class="btn btn-primary btn-sm" value = "${ data.courseId }" name="courseId">
+                    </form>
                 </div>
-                <div class="form-group mt-2">
-                <label>姓名：</label>
-                    <input type="text" class="form-control" name="studentName" id="name" placeholder="請輸入姓名" required="required">
-                  </div>
-                  
-                  <div class="form-group mt-2">
-								<label class="col-md-2 control-label">性别：</label>
-								<div class="col-md-8">
-									<label class="radio-inline">
-										<input id="gender-male" type="radio" name="gender" value="0">男
-									</label>
-									<label class="radio-inline">
-										<input id="gender-female" type="radio" name="gender" value="1">女
-									</label>
-								</div>
-							</div>
-                  <div class="form-group mt-2">
-                    <label>生日：</label>
-                    <input type="date" class="form-control" name="birth" id="birth" required="required">
-                  </div>
-                  <div class="form-group mt-2">
-                   <label>電話：</label>
-                    <input type="text" class="form-control" name="phone" id="phone" placeholder="請輸入電話" required="required">
-                  </div>
-                  <div class="form-group mt-2">
-                  	<label>信箱：</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="請輸入信箱" required="required">
-                  </div>
-                <div class="form-group mt-2">
-                <div class="text-center mt-3" >
-                <input id="btn-registry" type="button" class="btn btn-outline-secondary" value="提交"/>
-                 </div>
-                </div>
-              </form>
-  
+              </div>
             </div>
-          </div>
+          </div> <!-- End Course Item-->
+
+
+		</c:forEach>
+
+
+
+
+
+
+
         </div>
 
       </div>
-    </section><!-- End Pricing Section -->
+    </section><!-- End Courses Section -->
 
   </main><!-- End #main -->
 
@@ -151,17 +146,17 @@
 
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>Together Learning</h3>
-              <strong>Phone:</strong> 07-9699885<br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
               <strong>Email:</strong> info@example.com<br>
-         
+            </p>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Together Learning</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="/index">首頁</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="/about">關於齊上</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="/contact">聯絡我們</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">首頁</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">關於齊上</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">聯絡我們</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">服務條款隱私聲明</a></li>
             </ul>
           </div>
@@ -178,7 +173,7 @@
             <h4>獲取最新資訊</h4>
             <p>訂閱我們獲取最新資訊</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="button" value="訂閱">
+              <input type="email" name="email"><input type="submit" value="訂閱">
             </form>
           </div>
 
@@ -209,51 +204,12 @@
       </div>
     </div>
   </footer><!-- End Footer -->
-   <script type="text/javascript" th:inline="javascript">
-		$("#btn-registry").click(function() {
-				var username=$("#account").val();
-				var password=$("#password").val();
-				var name=$("#studentName").val();
-				var birth = $("#birth").val();
-				var phone = $("#phone").val();    
-				var email = $("#email").val();
-				var emailRegxp = /[\w-]+@([\w-]+\.)+[\w-]+/;
-				if(username=="" || password==""|| birth=="" || phone=="" || email=="" || name==""){
-					alert("請填寫完整資訊");
-					return;
-				}else if((!document.getElementById("gender-male").checked)&&(!document.getElementById("gender-female").checked)){
-					alert("請選擇性別")
-					return;
-				}else if(emailRegxp.test(email) != true){
-					alert('電子信箱格式錯誤');
-					$('#email').focus();
-					$('#email').select();
-					return false;
-				}
-			$.ajax({
-				url : "/reg",
-				type : "POST",
-				data : $("#form-registry").serialize(),
-				dataType : "JSON",
-				success : function(json) {
-					if (json.state == 200) {
-						alert("註冊成功,請重新登入")
-						location.href="/index";
-					}else{
-						alert(json.message)}
-				},
-				error : function(xhr) {
-					alert("註冊時產生錯誤，請聯絡客服");
-				}
-			});
-		});
-	</script>
-  
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  
-   <!-- Vendor JS Files -->
+
+
+  <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -261,7 +217,7 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-	  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
 
 </body>
 

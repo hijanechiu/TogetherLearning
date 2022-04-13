@@ -66,7 +66,7 @@ public class StudentService {
 		student.setCreatedTime(new Date());
 		student.setModifiedUser(student.getAccount());
 		student.setModifiedTime(new Date());
-		student.setPoint(0);
+		student.setStudentPoints(0);
 		sRep.save(student);
 	} 
 	
@@ -77,7 +77,7 @@ public class StudentService {
 			throw new UserNotFoundException("查無資料");
 		}
 		Student student=new Student();
-		student.setName(result.getName());
+		student.setStudentName(result.getStudentName());
 		student.setAccount(result.getAccount());
 		student.setPhone(result.getPhone());
 		student.setEmail(result.getEmail());
@@ -144,7 +144,7 @@ public class StudentService {
         String encodedPassword = passwordEncoder.encode(newPassword);
         student.setPassword(encodedPassword);
         student.setResetPasswordToken(null);
-        student.setModifiedUser(student.getName());
+        student.setModifiedUser(student.getStudentName());
         student.setModifiedTime(new Date());
         sRep.save(student);
     }
@@ -152,7 +152,7 @@ public class StudentService {
     public void createNewStudentAfterOAuthLoginSuccess(String email,String name,AuthenticationProvider provider) {
     	Student student=new Student();
     	student.setEmail(email);
-    	student.setName(name);
+    	student.setStudentName(name);
     	student.setCreatedUser(name);
     	student.setCreatedTime(new Date());
     	student.setAuthenticationProvider(provider);
@@ -160,15 +160,20 @@ public class StudentService {
     }
     
     public void updateStudentAfterOAuthLoginSuccess(Student student,String name,AuthenticationProvider provider) {
-    	student.setName(name);
+    	student.setStudentName(name);
     	student.setAuthenticationProvider(provider);
     	sRep.save(student);
     }
     
-    
+    //用來生成驗證碼連結的工具
     public static String getSiteURL(HttpServletRequest request) {
         String siteURL = request.getRequestURL().toString();
         return siteURL.replace(request.getServletPath(), "");
     }
+    
+    //汶珊寫的方法，用來更新學生點數
+	public Student update(Student student) {
+		return sRep.save(student);
+	}
     
 }

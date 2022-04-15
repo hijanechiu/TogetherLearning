@@ -31,7 +31,7 @@
 <!--   <script src="https://apis.google.com/js/platform.js" async defer></script> -->
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
   <!-- =======================================================
   * Template Name: Mentor - v4.7.0
@@ -64,9 +64,10 @@
               <li><a href="/courses?subjectId=2">數學</a></li>
             </ul>
           </li>
-          <li><a href="trainers.html">測驗中心</a></li>
+          <li><a href="/TC">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
           <li><a href="/contact">聯絡我們</a></li>
+          <li><a href="/student">會員專區</a></li>
         </ul>
         <a href="#" class=""><i class="bi bi-cart"></i></a>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -81,8 +82,9 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2>此處會放公告</h2>
-       <!-- <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>-->
+       <h2>齊上會員中心</h2>
+       <p>沒事就在家，在家就上課</p>
+       <p>加入齊上，齊心向上</p>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -201,6 +203,7 @@
 			var captchaCode=$("#captchaCode").val();
 			var rememberMe = $("#remember-me").is(":checked");
 			if(username==="" || password===""){
+				//Swal.fire({ type: 'error', title: '請填寫帳號密碼' })
 				alert("請填寫帳號密碼");
 				return;
 				}

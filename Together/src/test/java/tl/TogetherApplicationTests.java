@@ -14,6 +14,7 @@ import tl.VO.TestItemVO;
 import tl.entity.Contact;
 import tl.entity.Coupon;
 import tl.entity.CourseRecords;
+import tl.entity.Courses;
 import tl.entity.OrderDetail;
 import tl.entity.Point;
 import tl.entity.Student;
@@ -21,6 +22,8 @@ import tl.entity.Subscription;
 import tl.entity.TLOrder;
 import tl.repository.ContactRepository;
 import tl.repository.CouponRepository;
+import tl.repository.CourseRecordsRepository;
+import tl.repository.CoursesRepository;
 import tl.repository.OrderDetailRepository;
 import tl.repository.OrderRepository;
 import tl.repository.SubcriptionRepository;
@@ -231,6 +234,20 @@ class TogetherApplicationTests {
 		c.setCourseId(1);
 		c.setCourseDate(new Date());
 		courService.insert(c);
+	}
+	@Autowired
+	private CourseRecordsRepository ccr;
+	@Autowired
+	private CoursesRepository cccr;
+	@Test
+	void tes() {
+		List<CourseRecords> list = ccr.findByStudentIdOrderByCourseDateAsc(5);
+		for(CourseRecords c:list) {
+//			System.out.println(c.getCourseId());
+//			Courses course = cccr.findByCourseId(c.getCourseId());
+//			System.out.println(course.getTutors().getMeetingUrl());
+			System.out.println(c.getCourses().getTutors().getMeetingUrl());
+		}
 	}
 
 	

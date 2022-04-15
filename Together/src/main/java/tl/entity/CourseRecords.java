@@ -9,7 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -55,8 +56,8 @@ public class CourseRecords {
 	private Integer requiredPoints;
 	
 	
-	@OneToOne(fetch=FetchType.LAZY)
-    @PrimaryKeyJoinColumn(name = "courseId", referencedColumnName = "courseId")
+	@ManyToOne
+    @JoinColumn(name = "COURSE_ID", insertable=false,updatable=false)
 	private Courses courses;
 	//在CourseRecords裡面join Courses的CourseId
 

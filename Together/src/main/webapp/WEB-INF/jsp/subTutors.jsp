@@ -62,7 +62,7 @@
               <li><a href="/courses?subjectId=2">數學</a></li>
             </ul>
           </li>
-          <li><a href="trainers.html">測驗中心</a></li>
+         <li><a href="/TC">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
           <li><a href="/contact">聯絡我們</a></li>
           <li><a href="/student">會員專區</a></li>

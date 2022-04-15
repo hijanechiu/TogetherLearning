@@ -66,7 +66,7 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
 		  .tokenRepository(persistentTokenRepository())//將cookies存到資料庫內
 		  .and()
 	      .authorizeRequests()
-	      .antMatchers(HttpMethod.GET,"/student").authenticated()
+	      .antMatchers(HttpMethod.GET,"/student","/TC").authenticated()
 	      .antMatchers(HttpMethod.GET).permitAll()
 	      .antMatchers(HttpMethod.POST,"/addCourseRecord").authenticated()
 	      .antMatchers(HttpMethod.POST).permitAll()

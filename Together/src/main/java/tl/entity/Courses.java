@@ -1,11 +1,15 @@
 package tl.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -47,8 +51,9 @@ public class Courses {
 	//在Courses裡面join tutors的tutorId
 	
 	//關連到CourseRecords裡面的courses物件
-	@OneToOne(mappedBy = "courses",fetch=FetchType.LAZY)
-	private CourseRecords courseRecords;
+	@OneToMany
+	@JoinColumn(name="course_id")
+	private List<CourseRecords> courseRecords;
 	
 	public int getCourseId() {
 		return courseId;
@@ -122,11 +127,11 @@ public class Courses {
 		this.tutors = tutors;
 	}
 
-	public CourseRecords getCourseRecords() {
+	public List<CourseRecords> getCourseRecords() {
 		return courseRecords;
 	}
 
-	public void setCourseRecords(CourseRecords courseRecords) {
+	public void setCourseRecords(List<CourseRecords> courseRecords) {
 		this.courseRecords = courseRecords;
 	}
 
@@ -137,5 +142,8 @@ public class Courses {
 				+ introPhoto + ", requiredPoints=" + requiredPoints + ", tutors=" + tutors + ", courseRecords="
 				+ courseRecords + "]";
 	}
+
+
+
 	
 }

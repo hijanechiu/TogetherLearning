@@ -10,15 +10,15 @@
 
   <title>線上真人家教</title>
   <style type="text/css">
-  
+ 
   .reminder{
   	color: red ;
   	margin:8px 0px ;
-
   
   }
   
   </style>
+  
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -40,26 +40,64 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  
+  <script src="assets/js/jquery.min.js"></script> 
   <script type="text/javascript">
 
   
-  function chk(){
-	
-    if(document.form1.courseDate.value==''){
-      alert('請選擇日期');
-      document.form1.courseDate.focus();
-      return false;
-    }
-    if(document.form1.courseTime.value==''){
-      alert('請選擇時間');
-      document.form1.courseTime.focus();
-      return false;
-    }
-    return true;
 
+//--------------------------Ajax-------------------------------------//
+  
+	$(document).ready(function(){
 	
-  }
+	  $('#chooseCourse').click(function(){
+	
+			
+		if(document.form1.courseDate.value==''){
+		   alert('請選擇日期');
+		   document.form1.courseDate.focus();
+		   return false;
+		}
+		if(document.form1.courseTime.value==''){
+		   alert('請選擇時間');
+		   document.form1.courseTime.focus();
+		   return false;
+		}
+
+		  
+	    var course_id = parseInt($("#courseId").val());
+		var subject_id = parseInt($("#subjectId").val());
+		var required_points = parseInt($("#requiredPoints").val());
+		var tutor_name = $("#tutorName").val();
+		var course_date = $("#courseDate").val();
+		var course_time = $("#courseTime").val();
+
+		var data = {"courseId": course_id,
+		           "subjectId":subject_id,
+		           "courseDate":course_date,
+		           "courseTime":course_time,
+		           "requiredPoints":required_points,
+		           "tutorName":tutor_name};
+
+	    $.ajax
+	    ({ 
+	        url: '/addCourseRecord',
+	        data: JSON.stringify(data),
+	        type: 'post',
+	        dataType : "text", // 網頁預期從Server接收的資料型態 //
+	        contentType:'application/json',// 網頁要送到Server的資料型態 //
+	        success: function(result)
+	        {
+		        alert(result);
+	        },
+	        
+			error:function(xhr)
+	        {
+		        console.log(xhr);
+	        }
+	    });
+	});
+	});
+
 
   </script>
 
@@ -93,7 +131,7 @@
               <li><a href="/courses?subjectId=2">數學</a></li>
             </ul>
           </li>
-          <li><a href="trainers.html">測驗中心</a></li>
+          <li><a href="/TC">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
           <li><a href="/contact">聯絡我們</a></li>
           <li><a href="/student">會員專區</a></li>
@@ -145,11 +183,11 @@
               <p>${courses.requiredPoints}P/H</p>
             </div>
 <!-- ============================選課表單===================================== -->
-            <form action="addCourseRecord" method="post" id="form1" name="form1" onsubmit="return chk();">
-              <input type="hidden" value = "${ courses.courseId }" name="courseId" >
-              <input type="hidden" value = "${ courses.subjectId }" name="subjectId" >
-              <input type="hidden" value = "${ courses.requiredPoints }" name="requiredPoints" >
-              <input type="hidden" value = "${ tutors.tutorName }" name="tutorName" >
+            <form id="form1" name="form1" onsubmit="return chk();">
+              <input type="hidden" value = "${ courses.courseId }" name="courseId" id="courseId">
+              <input type="hidden" value = "${ courses.subjectId }" name="subjectId" id="subjectId">
+              <input type="hidden" value = "${ courses.requiredPoints }" name="requiredPoints" id="requiredPoints">
+              <input type="hidden" value = "${ tutors.tutorName }" name="tutorName" id="tutorName">
               <div id="datepicker">
                 <p>
                   選擇日期：
@@ -178,7 +216,7 @@
                 </select>
                 </p>
                 <div>
-                  <input type="submit" class="send" value="送出"><br>
+                  <input type="button" class="send" id="chooseCourse" value="送出"><br>
                   <h6 class="reminder" id="reminder">${reminder}</h6> 
                 </div>
               </div>
@@ -214,7 +252,7 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Together Learning</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="/index">首頁</a></li>
+               <li><i class="bx bx-chevron-right"></i> <a href="/index">首頁</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/about">關於齊上</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/contact">聯絡我們</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">服務條款隱私聲明</a></li>
@@ -278,6 +316,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  
 
 </body>
 

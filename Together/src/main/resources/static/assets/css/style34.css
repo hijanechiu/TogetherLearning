@@ -1027,71 +1027,29 @@ section {
   border-radius: 0;
   position: relative;
   overflow: hidden;
-  height:400px
+  height:300px
 }
 .pricing .box1 {
   margin-top: -30px;
   padding: 20px;
   background: #fff;
-  text-align: left;
+  text-align: center;
   border: 1px solid #a1c2ab;
-  border-radius: 5;
+  border-radius: 0;
   position: relative;
   overflow: hidden;
-  height:640px
+  height:600px
 }
 .pricing .box2 {
   margin-top: -30px;
   padding: 20px;
   background: #fff;
-  text-align: left;
+  text-align: center;
   border: 1px solid #a1c2ab;
   border-radius: 0;
   position: relative;
   overflow: hidden;
   height:520px
-}
-.pricing .studentbox {
-  padding: 20px;
-  background: #fff;
-  text-align: center;
-  border: 1px solid #a1c2ab;
-  border-radius: 0;
-  position: relative;
-  overflow: hidden;
-  height:300px
-}
-
-
-.pricing .pwdbox{
-  padding: 20px;
-  background: #fff;
-  text-align: center;
-  border: 1px solid #a1c2ab;
-  border-radius: 0;
-  position: relative;
-  overflow: hidden;
-  height:300px
-}
-.pricing .forgetpwdbox{
-  padding: 20px;
-  background: #fff;
-  text-align: center;
-  border: 1px solid #a1c2ab;
-  border-radius: 0;
-  position: relative;
-  overflow: hidden;
-  height:230px
-}
-.pricing .resetpwdbox{
-  padding: 20px;
-  background: #fff;
-  text-align: center;
-  border: 1px solid #a1c2ab;
-  border-radius: 0;
-  position: relative;
-  overflow: hidden;
-  height:250px
 }
 
 .pricing h3 {
@@ -1102,7 +1060,6 @@ section {
   font-weight: 600;
   color: #fff;
   background: #76d893;
-  text-align: center
 }
 .pricing h4 {
   font-size: 36px;
@@ -1177,15 +1134,13 @@ section {
   color: #fff;
 }
 .pricing a{
-  
+  text-decoration: underline;
   display: inline-block;
   width: 16rem;
 }
-.pricing a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
-  color: #eacf4f;
-}
+
+
+
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -1287,16 +1242,15 @@ section {
 .contact .php-email-form textarea {
   padding: 10px 12px;
 }
-.contact input[type=button] {
+.contact .php-email-form button[type=submit] {
   background: #5fcf80;
   border: 0;
   padding: 10px 35px;
   color: #fff;
   transition: 0.4s;
   border-radius: 50px;
-  margin-top:15px;
 }
-.contact input[type=button]:hover {
+.contact .php-email-form button[type=submit]:hover {
   background: #3ac162;
 }
 @-webkit-keyframes animate-loading {
@@ -1408,7 +1362,7 @@ section {
   padding: 4px 8px;
   width: calc(100% - 100px);
 }
-#footer .footer-newsletter form input[type=button] {
+#footer .footer-newsletter form input[type=submit] {
   position: absolute;
   top: -1px;
   right: -1px;
@@ -1423,7 +1377,7 @@ section {
   border-radius: 50px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
-#footer .footer-newsletter form input[type=button]:hover {
+#footer .footer-newsletter form input[type=submit]:hover {
   background: #3ac162;
 }
 #footer .credits {
@@ -1455,26 +1409,4 @@ section {
   background: #3ac162;
   color: #fff;
   text-decoration: none;
-}
-
-/* 這邊的CSS是聖智做的 */
-
-#testCards{
-  display: flex;
-  /* 水平置中 */
-  justify-content: center;    
-  text-align: center;
-
-}
-
-#card {
-  width: 700px;
-  /* border: 1px solid rgb(58, 54, 54); */
-  margin: 100px;
-  text-align: center;
-  
-}
-
-#startTest{
-  font-size: 2rem;
 }

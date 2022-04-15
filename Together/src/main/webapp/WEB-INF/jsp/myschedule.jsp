@@ -126,9 +126,10 @@
               <li><a href="/courses?subjectId=2">數學</a></li>
             </ul>
           </li>
-          <li><a href="trainers.html">測驗中心</a></li>
+         <li><a href="/TC">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
           <li><a href="/contact">聯絡我們</a></li>
+          <li><a href="/student">會員專區</a></li>
           <li><a href="/logout">登出</a></li>
           <a href="#" class=""><i class="bi bi-cart"></i></a>
 
@@ -171,7 +172,7 @@
                       <td>取消選課</td>
                     </tr>
 
-		<c:forEach  items="${courRecoList}"  var="data">                     
+		<c:forEach  items="${courRecoList}"  var="data">     
                     
                     <tr class="row-details">
                       <td>${data.stringDate }</td> 
@@ -191,10 +192,7 @@
        			</form>            
                       </td>
                     </tr>
-                    
  		</c:forEach>                   
-
- 
                     
                 </table>
               </div>

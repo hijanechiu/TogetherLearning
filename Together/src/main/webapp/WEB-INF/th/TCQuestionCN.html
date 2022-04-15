@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>重設密碼</title>
+  <title>國文題目</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -27,10 +27,13 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style27.css" rel="stylesheet">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-
-
-
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+  
 
   <!-- =======================================================
   * Template Name: Mentor - v4.7.0
@@ -66,9 +69,10 @@
           <li><a href="/TC">測驗中心</a></li>
           <li><a href="events.html">點數購買</a></li>
           <li><a href="/contact">聯絡我們</a></li>
-          <li><a href="/student">會員專區</a></li>
-        </ul>
+           <li><a href="/student">會員專區</a></li>
+             <li th:if="${session.sid!=null}"><a href="/logout">登出</a></li>
         <a href="#" class=""><i class="bi bi-cart"></i></a>
+        </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
  
       </nav><!-- .navbar -->
@@ -81,36 +85,79 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-      <h2>齊上會員中心</h2>
-       <p>沒事就在家，在家就上課</p>
-       <p>加入齊上，齊心向上</p>
+        <h2>測驗中心</h2>
+        <p>您正在進行國文測驗</p>
+       <!-- <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>-->
       </div>
     </div><!-- End Breadcrumbs -->
 
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
+    <!-- ======= 國文題目 ======= -->
+    <div id="testCards">
+
+        <div id="card">
+          <h1>國文</h1>
+          <h3>第一題</h3>
+          <p>1.在現行台灣人使用的注音符號中，數量是幾個?</p>
+          <div style="width: 700px;">
           
-        <div class="row">  
-          <div class="col-lg-4 col-md-6 offset-4">
-            <div class="resetpwdbox">
-              <h3>重設密碼</h3>
-              <form>
-              	<input type="hidden" id="token" name="token" th:value="${token}" />
-                <div class="form-group mt-2">
-                  <input type="password" class="form-control" name="password" id="password" placeholder="請輸入新密碼" required>
-                </div>
-                <div class="form-group mt-2">
-                  <input type="password" class="form-control" placeholder="請再次輸入新密碼"
-                required id="checkPasswordMatch" />
-                </div>
-                <div class="text-center mt-4" ><input id="btn-resetpwd" type="button" class="btn btn-outline-secondary" value="提交"></div>
-              </form>
-            </div>
+            <form id="form1" action="" method="">
+              <div><input type="radio" name="r1" id="r1" value="a"><label for="r1">a.35</label></div>
+              <div><input type="radio" name="r1" id="r2" value="b"><label for="r2">b.36</label></div>
+              <div><input type="radio" name="r1" id="r3" value="c"><label for="r3">c.37</label></div>
+              <div><input type="radio" name="r1" id="r3" value="d"><label for="r3">d.38</label></div>
+            </form>
+
           </div>
 
+          <h3>第二題</h3>
+          <p>2.在現行台灣人使用的注音符號中，有幾個聲調?</p>
+
+          <div style="width: 700px;">
+          
+            <form id="form2" action="" method="">
+              <div><input type="radio" name="r2" id="r1" value="a"><label for="r1">a.2</label></div>
+              <div><input type="radio" name="r2" id="r2" value="b"><label for="r2">b.3</label></div>
+              <div><input type="radio" name="r2" id="r3" value="c"><label for="r3">c.4</label></div>
+              <div><input type="radio" name="r2" id="r3" value="d"><label for="r3">d.5</label></div>
+            </form>
+
+          </div>
+
+
+          <h3>第三題</h3>
+          <p>3.在現行台灣人使用的注音符號中，一個單字最多會有幾個注音?</p>
+
+          <div style="width: 700px;">
+          
+            <form id="form3" action="" method="">
+              <div><input type="radio" name="r3" id="r1" value="a"><label for="r1">a.1</label></div>
+              <div><input type="radio" name="r3" id="r2" value="b"><label for="r2">b.2</label></div>
+              <div><input type="radio" name="r3" id="r3" value="c"><label for="r3">c.3</label></div>
+              <div><input type="radio" name="r3" id="r3" value="d"><label for="r3">d.以上皆非</label></div>
+            </form>
+
+          </div>
+
+          <h3>第四題</h3>
+          <p>4.下列何者不是注音符號?</p>
+
+
+          <div style="width: 700px;">
+          
+            <form id="form4" action="" method="">
+              <div><input type="radio" name="r4" id="r1" value="a"><label for="r1">a.三</label></div>
+              <div><input type="radio" name="r4" id="r2" value="b"><label for="r2">b.ㄨ</label></div>
+              <div><input type="radio" name="r4" id="r3" value="c"><label for="r3">c.ㄅ</label></div>
+              <div><input type="radio" name="r4" id="r3" value="d"><label for="r3">d.ㄥ</label></div>
+            </form>
+
+          </div>
+
+          <br>
+
+          <button @click="calcaulate">送出答案</button> <!-- onclick -->
+        </div><!-- End Pricing Section -->
       </div>
-    </section><!-- End Pricing Section -->
 
   </main><!-- End #main -->
 
@@ -123,8 +170,8 @@
 
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>Together Learning</h3>
-              <strong>Phone:</strong> 07-9699885<br>
-              <strong>Email:</strong> info@example.com<br>
+            <strong>Phone:</strong> 07-9699885<br>
+            <strong>Email:</strong> info@example.com<br>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
@@ -149,7 +196,7 @@
             <h4>獲取最新資訊</h4>
             <p>訂閱我們獲取最新資訊</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="button" value="訂閱">
+              <input type="email" name="email"><input type="submit" value="訂閱">
             </form>
           </div>
 
@@ -182,7 +229,8 @@
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter.js"></script>
@@ -193,41 +241,95 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script type="text/javascript">
-  $("#btn-resetpwd").click(function(){
-	  var token=$("#token").val();
-	  var password=$("#password").val();
-	  var checkPasswordMatch=$("#checkPasswordMatch").val()
-	  if(password!=checkPasswordMatch){
-			alert("兩次輸入密碼不一致")
-			return
-		}else if(password==""||checkPasswordMatch==""){
-			alert("請填寫完整資訊")
-			return
-			}
-	 $.ajax({
-			url : "/reset_password",
-			type : "POST",
-			data : {
-				"token":token,
-				"password":password
-				},
-			dataType : "JSON",
-			success : function(json) {
-				if (json.state==200) {
-					alert("修改密碼成功，請嘗試登入")
-					location.href="/login"
-				}else{
-				alert("密碼修改失敗，請稍後再試或聯絡客服")
-				}
-			},
-			error : function(xhr) {
-				alert("密碼修改失敗，請稍後再試或聯絡客服");
-			}
-		});
-  });
-  </script>
+ <script type="module" src="assets/js/cnquestion.js"></script>
+  
+<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+<script src="https://unpkg.com/vue@3"></script>
 
+<script type="text/javascript" language="javascript">
+
+function Foo()
+{
+    var selectedIndex1 = -1;
+    var form1 = document.getElementById("form1");
+    var i1 = 0;
+    
+    for (i1=0; i1<form1.r1.length; i1++)
+    {
+        if (form1.r1[i1].checked)
+        {
+            selectedIndex1 = i1;
+//             alert("第一題：" + form1.r1[i1].value);
+            break;
+        }
+    }
+    
+    var selectedIndex2 = -1;
+    var form2 = document.getElementById("form2");
+    var i2 = 0;
+    
+    for (i2=0; i2<form2.r2.length; i2++)
+    {
+        if (form2.r2[i2].checked)
+        {
+            selectedIndex2 = i2;
+//             alert("第二題：" + form2.r2[i2].value);
+            break;
+        }
+    }
+    
+    var selectedIndex3 = -1;
+    var form3 = document.getElementById("form3");
+    var i3 = 0;
+    
+    for (i3=0; i3<form3.r3.length; i3++)
+    {
+        if (form3.r3[i3].checked)
+        {
+            selectedIndex3 = i3;
+//             alert("第三題：" + form3.r3[i3].value);
+            break;
+        }
+    }
+
+    var selectedIndex4 = -1;
+    var form4 = document.getElementById("form4");
+    var i4 = 0;
+    
+    for (i4=0; i4<form4.r4.length; i4++)
+    {
+        if (form4.r4[i4].checked)
+        {
+            selectedIndex4 = i4;
+//             alert("第四題：" + form4.r4[i4].value);
+            break;
+        }
+    }
+
+    var answer = {//要給後端的資料
+      "1":form1.r1[i1].value,
+      "2":form2.r2[i2].value,
+      "3":form3.r3[i3].value,
+      "4":form4.r4[i4].value,
+      "account":"student1"
+    }
+    alert(JSON.stringify(answer) );
+    
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:8080/123/m1");
+
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json");//設定請求header
+
+    xhr.onload = () => console.log(xhr.responseText);//送請求
+
+    xhr.send(JSON.stringify(answer));//把答案送到後端
+    
+    alert(xhr.responseText);
+
+}
+  
+    </script>
 </body>
-
+	
 </html>

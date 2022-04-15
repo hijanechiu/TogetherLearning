@@ -2,6 +2,7 @@ package tl.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,14 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import tl.VO.JsonAcepter;
 import tl.entity.CourseRecords;
 import tl.entity.Courses;
 import tl.entity.Point;
@@ -33,7 +41,7 @@ import tl.service.impl.StudentService;
 
 @SessionAttributes(names={"sid"})
 @Controller
-public class ChooseCourseController {
+public class ChooseCourseController extends BaseController{
 
 	@Autowired
 	CoursesRepository cRep;
@@ -67,10 +75,14 @@ public class ChooseCourseController {
 		
 		List<CourseRecords> courRecoDataList = CourRecoService.findByStudentIdOrderByCourseDateAsc(sid); //把CourseRecords裡面的所有資料叫出來
 		
+		for(CourseRecords c :courRecoDataList) {
+			Courses course = cRep.findByCourseId(c.getCourseId());
+			c.setCourses(course);
+		}
+		
 		ModelAndView mav=new ModelAndView();  
 		mav.setViewName("jsp/myschedule");//返回路径==>jsp  
 		mav.addObject("courRecoList", courRecoDataList);//使用ModelAndView的addObject方法将List<CourseRecords> courRecoDataList放進去  
-
 		return mav;
 	} 
 	
@@ -146,24 +158,26 @@ public class ChooseCourseController {
 	
 //-------------------------------------------選課功能-----------------------------------------------//
 	
-	@RequestMapping(value = "/addCourseRecord")
-	public String addCourseRecord(HttpServletRequest request, @RequestParam(value = "courseId") int cId,
-			@RequestParam(value = "subjectId") int subId,@SessionAttribute Integer sid,  
-			@RequestParam(value = "courseDate") String cDate,@RequestParam(value = "courseTime") String cTime,
-			@RequestParam(value = "requiredPoints") int rPoints,@RequestParam(value = "tutorName") String tName,
-			RedirectAttributes redirectAttributes) throws ParseException {
+	@RequestMapping(value = "/addCourseRecord",method = RequestMethod.POST)
+	public ResponseEntity<String> addCourseRecord(@RequestBody JsonAcepter data,@SessionAttribute Integer sid) throws Exception{
+		
+		int cId = data.getCourseId();
+		int subId = data.getSubjectId();
+		int rPoints = data.getRequiredPoints();
+		String tName = data.getTutorName();
+		String cDate = data.getCourseDate();
+		String cTime = data.getCourseTime();
+		
 		
 		CourseRecords courReco = new CourseRecords();
 		Point pointReco = new Point();
 		Student student = stuService.findBySid(sid);
 		Courses courses = cRep.findByCourseId(cId);
 		
-		
 		String courseDate = cDate +" "+ cTime; 
 		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
 		CourseRecords courRecoCheckDateTime = courRecoRep.findByCourseIdAndCourseDate(cId, format.parse(courseDate));
-		
 		List<CourseRecords> courRecoCheckFirstCourse = courRecoRep.findBySubjectIdAndStudentId(subId, sid);
 		
 		int stuPoint = student.getStudentPoints();
@@ -172,7 +186,8 @@ public class ChooseCourseController {
 		
 		String reminder = null;
 		Date changedDate = new Date();
-	
+		
+
 		if(stuPoint < courPoint) {
 			
 			reminder = "選課失敗，您的點數不足。歡迎至購物商城購買點數！";
@@ -206,7 +221,12 @@ public class ChooseCourseController {
 			pointReco.setChangedTime(changedDate);
 			
 			pService.insert(pointReco);
+			
+			
+			
 		}else {
+			
+			reminder = "選課成功！";
 			
 			//扣點數
 			student.setStudentPoints(stuPoint-courPoint);
@@ -229,13 +249,12 @@ public class ChooseCourseController {
 			pointReco.setChangedTime(changedDate);
 			
 			pService.insert(pointReco);
-		}	
-		
-		redirectAttributes.addAttribute("courseId", cId);  //redirect至courseDetail，並帶參數，參數key要與目的地接收參數的value名一樣
-		redirectAttributes.addAttribute("reminder", reminder); //redirect至courseDetail，並帶參數，參數key要與目的地接收參數的value名一樣
-		
-		return "redirect:/courseDetail";}
+			
+		}
+		return ResponseEntity.ok(reminder);
 	}
+	
+}
 	
 	
 

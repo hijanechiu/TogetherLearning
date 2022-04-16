@@ -152,7 +152,61 @@
           還是以紮實腳步提升的實力，我們都可以為你一對一打造屬於你的課程！</p>
       </div>
     </div><!-- End Breadcrumbs -->
+    
+     <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container" data-aos="fade-up">
 
+  
+         <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="studentbox">
+              <h3>購買紀錄</h3>
+              <ul>
+                <li><a href="/order">查詢訂單</a></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+
+           <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+            <div class="studentbox">
+              <h3>個人資料</h3>
+              <ul>
+                <li><a href="/update_info">修改基本資料</a></li>
+                <li><a href="/update_password">修改密碼</a></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+
+         <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+            <div class="studentbox">
+              <h3>我的點數</h3>
+              <ul>
+                <li><a href="/point">點數異動查詢</a></li>
+                <li><a href="/coupon">折扣券查詢</a></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+            <div class="studentbox">
+              <h3>我的學習</h3>
+              <ul>
+                <li><a href="/myschedule">我的課表</a></li>
+                 <li><a href="/stest">測驗紀錄</a></li>
+                <li></li>
+              </ul>       
+            </div>
+          </div>
+        </div>   
+        </div>
+        </section>
     <!-- ======= Schedule Section ======= -->
 
     <section id="events" class="events">

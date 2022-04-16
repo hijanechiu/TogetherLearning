@@ -12,6 +12,7 @@
   <!-- Favicons -->
   <link href="assets/img/TL2.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="shortcuticon"href="../resources/favicon.ico"th:href="@{/static/favicon.ico}">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -63,7 +64,12 @@
             </ul>
           </li>
          <li><a href="/TC">測驗中心</a></li>
-          <li><a href="events.html">點數購買</a></li>
+           <li class="dropdown"><a href="#"><span>購買點數</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                    <li><a href="/buycarOrderProduct">購買點數</a></li>
+                    <li><a href="/buycarOrderquerymainaction">訂單明細</a></li>
+                    </ul>
+                    </li>
           <li><a href="/contact">聯絡我們</a></li>
           <li><a href="/student">會員專區</a></li>
             <li th:if="${session.sid!=null}"><a href="/logout">登出</a></li>  

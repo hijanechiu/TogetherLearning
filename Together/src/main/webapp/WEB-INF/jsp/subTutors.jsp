@@ -63,9 +63,17 @@
             </ul>
           </li>
          <li><a href="/TC">測驗中心</a></li>
-          <li><a href="events.html">點數購買</a></li>
+          <li class="dropdown"><a href="#"><span>購買點數</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                    <li><a href="/buycarOrderProduct">購買點數</a></li>
+                    <li><a href="/buycarOrderquerymainaction">訂單明細</a></li>
+                    </ul>
+                    </li>
           <li><a href="/contact">聯絡我們</a></li>
           <li><a href="/student">會員專區</a></li>
+           <c:if test="${sessionScope.sid!=null}">
+          <li><a href="/logout">登出</a></li>
+          </c:if>
           <a href="#" class=""><i class="bi bi-cart"></i></a>
 
         </ul>

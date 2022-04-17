@@ -64,7 +64,6 @@
 		   document.form1.courseTime.focus();
 		   return false;
 		}
-
 		  
 	    var course_id = parseInt($("#courseId").val());
 		var subject_id = parseInt($("#subjectId").val());
@@ -72,14 +71,12 @@
 		var tutor_name = $("#tutorName").val();
 		var course_date = $("#courseDate").val();
 		var course_time = $("#courseTime").val();
-
 		var data = {"courseId": course_id,
 		           "subjectId":subject_id,
 		           "courseDate":course_date,
 		           "courseTime":course_time,
 		           "requiredPoints":required_points,
 		           "tutorName":tutor_name};
-
 	    $.ajax
 	    ({ 
 	        url: '/addCourseRecord',
@@ -101,6 +98,7 @@
 	    });
 	});
 	});
+
 
 
   </script>

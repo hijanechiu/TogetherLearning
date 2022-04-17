@@ -28,11 +28,7 @@ public class EnterController {
 		return "th/updatepwd";
 	}
 	
-	@GetMapping("/order_detail/{oid}")
-	public String orderDetail(@PathVariable("oid") Integer oid,Model m) {
-		m.addAttribute("oid", oid);
-		return "th/orderDetail";
-	}
+
 	
 	
 }

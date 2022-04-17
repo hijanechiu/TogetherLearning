@@ -225,7 +225,6 @@ public class ChooseCourseController extends BaseController{
 			
 			
 		}else {
-			
 			reminder = "選課成功！";
 			
 			//扣點數

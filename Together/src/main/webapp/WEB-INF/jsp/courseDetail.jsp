@@ -41,7 +41,8 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <script src="assets/js/jquery.min.js"></script> 
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <script type="text/javascript">
 
   
@@ -54,12 +55,12 @@
 	
 			
 		if(document.form1.courseDate.value==''){
-		   alert('請選擇日期');
+		   Swal.fire({ type: 'error', title: '請選擇日期'})
 		   document.form1.courseDate.focus();
 		   return false;
 		}
 		if(document.form1.courseTime.value==''){
-		   alert('請選擇時間');
+			Swal.fire({ type: 'error', title: '請選擇時間'})
 		   document.form1.courseTime.focus();
 		   return false;
 		}
@@ -88,7 +89,9 @@
 	        contentType:'application/json',// 網頁要送到Server的資料型態 //
 	        success: function(result)
 	        {
-		        alert(result);
+	        Swal.fire(
+	        result,
+	        )
 	        },
 	        
 			error:function(xhr)

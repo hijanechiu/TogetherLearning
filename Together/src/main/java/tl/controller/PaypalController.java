@@ -1,5 +1,6 @@
 package tl.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,10 @@ public class PaypalController {
 	private StudentService sService;
 	@Autowired
 	private PointService poiService;
+	
+	private String onekunit;
+	private String fivekunit;
+	private String tenkunit;
 
     
 	public static final String SUCCESS_URL = "pay/success";
@@ -55,6 +60,9 @@ public class PaypalController {
 			Payment payment = service.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
 					order.getIntent(), order.getDescription(), "http://localhost:8080/" + FAILED_URL,
 					"http://localhost:8080/" + SUCCESS_URL);
+			onekunit=order.getOnekunit();
+			fivekunit=order.getFivekunit();
+			tenkunit=order.getTenkunit();
 			for(Links link:payment.getLinks()) {
 				if(link.getRel().equals("approval_url")) {
 					return "redirect:"+link.getHref();
@@ -76,6 +84,7 @@ public class PaypalController {
 
 	    @GetMapping(value = SUCCESS_URL)
 	    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId,@SessionAttribute Integer sid) {
+	    	Date date=new Date();
 	    	try {
 	            Payment payment = service.executePayment(paymentId, payerId);
 	            System.out.println(payment.toJSON());
@@ -84,10 +93,16 @@ public class PaypalController {
 	            	paypal1.setCustomfield1(Integer.toString(sid)); //學生id
 	            	paypal1.setRtncode(payment.getState());
 	            	paypal1.setTradeno(payment.getId());
-	            	paypal1.setTradedate(payment.getCreateTime());
+	            	SimpleDateFormat format=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	            	String fomatDate = format.format(date);
+	            	paypal1.setTradedate(fomatDate);
 	            	String stringTotal=payment.getTransactions().get(0).getAmount().getTotal().split("\\.")[0];
 	            	paypal1.setTradeamt(stringTotal);
+	            	paypal1.setCustomField2(onekunit);
+	            	paypal1.setCustomField3(fivekunit);
+	            	paypal1.setCustomField4(tenkunit);
 	            	pservice.insert(paypal1);
+	            	
 	            	
 	            	Student student=sService.findBySid(sid);
 	    			int stuPoint = student.getStudentPoints();
@@ -99,7 +114,7 @@ public class PaypalController {
 	                point1.setSid(sid); //抓session的sid
 	                point1.setPoints(total);  //設置異動點數
 	                point1.setChangedReason("點數購買");  //設置異動原因
-	                point1.setChangedTime(new Date());  
+	                point1.setChangedTime(date);  
 	                poiService.insert(point1);
 	            	
 	                return "th/success";

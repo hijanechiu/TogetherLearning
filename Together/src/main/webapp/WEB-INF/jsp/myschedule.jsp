@@ -32,11 +32,10 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <script src="assets/js/jquery.min.js"></script>
   <script type="text/javascript">
-
-        $(function () {
+    $(function () {
 
             //以上課按鈕為例 //先隱藏按鈕
             $(".scheduleBtn").hide();
@@ -93,7 +92,6 @@
                 }
             });
         });
-
     </script>
 
   <!-- =======================================================
@@ -163,7 +161,7 @@
             <div class="studentbox">
               <h3>購買紀錄</h3>
               <ul>
-                <li><a href="/order">查詢訂單</a></li>
+                <li><a href="/buycarOrderquerymainaction">查詢訂單</a></li>
                 <li></li>
                 <li></li>
               </ul>
@@ -240,7 +238,7 @@
                       </td>
         			  <td>
         		<form action="deleteCourseRecord" method="post">
-                      	<input type="submit" value="取消"  class="scheduleBtn2" id="scheduleCancelBtn${data.courseRecordId}" onclick="if(confirm('您確定取消此課程嗎? 要確定餒～')) return true;else return false">
+                    <input type="submit" value="取消"  class="scheduleBtn2" id="scheduleCancelBtn${data.courseRecordId}" onclick="if(confirm('您確定取消此課程嗎? 要確定餒～')) return true;else return false"> 
                       	<input type="hidden" value="${data.courseRecordId}" name="courseRecordId" class="scheduleBtn2">                      
                       	<input type="hidden" value="${data.studentId}" name="studentId">                      
        			</form>            

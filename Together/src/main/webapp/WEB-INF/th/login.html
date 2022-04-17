@@ -209,8 +209,7 @@
 			var captchaCode=$("#captchaCode").val();
 			var rememberMe = $("#remember-me").is(":checked");
 			if(username==="" || password===""){
-				//Swal.fire({ type: 'error', title: '請填寫帳號密碼' })
-				alert("請填寫帳號密碼");
+				Swal.fire({ type: 'error', title: '請填寫帳號密碼' })
 				return;
 				}
 
@@ -226,13 +225,19 @@
 				dataType : "JSON",
 				success : function(json) {
 					if (json.isok) {
-						alert("登入成功")
-						location.href="/student";
+						Swal.fire(
+								'登入成功',
+								'點選OK跳轉至會員專區',
+								'success')
+								.then(function() {
+								location.href="/student"
+								});
 					}else{
-					alert(json.message)}
+						Swal.fire({ type: 'error', title: json.message})
+					}
 				},
 				error : function(xhr) {
-					alert("查無帳號或密碼錯誤");
+					Swal.fire({ type: 'error', title: '查無帳號或密碼錯誤'})
 				}
 			});
 		});

@@ -102,7 +102,8 @@
     <div id="productListTitle">購買紀錄</div>
     
     <div id="showtable_div">
-    <table id="showproduct" border="1"></table>
+    <table id="showproduct" border="1">
+    </table>
     <table id="showpage">
       <tr >
       <td>總頁數:${totalPages} 總筆數:${totalElements}</td>

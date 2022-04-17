@@ -6,7 +6,6 @@ table {
 }
 
 
-
 /*標題:購買紀錄*/
 #productListTitle {
  	margin-top:50px; 
@@ -33,10 +32,10 @@ table {
 /*table_本體*/
 #showproduct{
 	margin-bottom:auto;
-	font-size: 25px;
-	font-weight: bold;
+	font-size: 20px;
 	text-align: center;
 }
+
 
 /*pagetable_本體*/
 #showpage{

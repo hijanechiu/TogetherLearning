@@ -29,7 +29,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style27.css" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 
 
@@ -205,10 +205,10 @@
 	  var password=$("#password").val();
 	  var checkPasswordMatch=$("#checkPasswordMatch").val()
 	  if(password!=checkPasswordMatch){
-			alert("兩次輸入密碼不一致")
+		  Swal.fire({ type: 'error', title: '兩次輸入密碼不一致' })
 			return
 		}else if(password==""||checkPasswordMatch==""){
-			alert("請填寫完整資訊")
+			 Swal.fire({ type: 'error', title: '請填寫完整資訊' })
 			return
 			}
 	 $.ajax({
@@ -221,14 +221,19 @@
 			dataType : "JSON",
 			success : function(json) {
 				if (json.state==200) {
-					alert("修改密碼成功，請嘗試登入")
-					location.href="/login"
+					Swal.fire(
+							'修改密碼成功',
+							'請嘗試登入',
+							'success')
+							.then(function() {
+							location.href="/student"
+							});
 				}else{
-				alert("密碼修改失敗，請稍後再試或聯絡客服")
+					Swal.fire({ type: 'error', title: '密碼修改失敗，請稍後再試或聯絡客服'})
 				}
 			},
 			error : function(xhr) {
-				alert("密碼修改失敗，請稍後再試或聯絡客服");
+				Swal.fire({ type: 'error', title: '密碼修改失敗，請稍後再試或聯絡客服'})
 			}
 		});
   });

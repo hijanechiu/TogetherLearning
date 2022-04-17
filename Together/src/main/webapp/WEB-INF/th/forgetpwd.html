@@ -28,7 +28,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style27.css" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 
 
@@ -198,10 +198,10 @@
 	  var email=$("#email").val();
 	  var emailRegxp = /[\w-]+@([\w-]+\.)+[\w-]+/; 
 	  if(email===""){
-		alert("請填寫信箱")
+		Swal.fire({ type: 'error', title: '請填寫信箱'})
 		return false
 		 }else if(emailRegxp.test(email) != true){
-		alert('電子信箱格式錯誤');
+		Swal.fire({ type: 'error', title: '電子信箱格式錯誤'})
 		return false;
 		}
 	 $.ajax({
@@ -213,14 +213,19 @@
 			dataType : "JSON",
 			success : function(json) {
 				if (json.state==200) {
-					alert("已發送驗證信至註冊信箱")
-					location.href="/index"
+				Swal.fire(
+				'驗證信已發送',
+				'請至信箱點選驗證連結重新設置密碼',
+				'success')
+				.then(function() {
+				location.href="/index"
+				});
 				}else{
-				alert("驗證信發送失敗，請稍後再試或聯絡客服")
+					Swal.fire({ type: 'error', title: '驗證信發送失敗，請稍後再試或聯絡客服'})
 				}
 			},
 			error : function(xhr) {
-				alert("驗證信發送失敗，請檢查註冊信箱是否正確或聯絡客服");
+				Swal.fire({ type: 'error', title: '驗證信發送失敗，請檢查註冊信箱是否正確或聯絡客服'})
 			}
 		});
   });

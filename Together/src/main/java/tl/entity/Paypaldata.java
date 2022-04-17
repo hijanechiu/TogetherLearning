@@ -31,6 +31,15 @@ public class Paypaldata {
 	
 	@Column(name="rtncode")
     private String rtncode;
+	
+	@Column(name="customfield4")
+	private String customField4;
+	
+	@Column(name="customfield3")
+	private String customField3;
+	
+	@Column(name="customfield2")
+	private String customField2;
     
     
 	public int getPaypalnumber() {
@@ -68,6 +77,24 @@ public class Paypaldata {
 	}
 	public void setRtncode(String rtncode) {
 		this.rtncode = rtncode;
+	}
+	public String getCustomField4() {
+		return customField4;
+	}
+	public void setCustomField4(String customField4) {
+		this.customField4 = customField4;
+	}
+	public String getCustomField3() {
+		return customField3;
+	}
+	public void setCustomField3(String customField3) {
+		this.customField3 = customField3;
+	}
+	public String getCustomField2() {
+		return customField2;
+	}
+	public void setCustomField2(String customField2) {
+		this.customField2 = customField2;
 	}
 
     

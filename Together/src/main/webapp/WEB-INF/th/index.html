@@ -30,7 +30,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style27.css" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <!-- =======================================================
   * Template Name: Mentor - v4.7.0
   * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
@@ -369,7 +369,7 @@
     </div>
 <form id="form1" class="p-5">
 <div id="aa" class="form-control" 
-style="position:fixed; bottom:65px; right:0px; width:200px; height:250px; background-color: #7ed899;opacity:0.8;border-radius:20px;font-size:16px;text-align:left;color:#444444;padding:10px">
+style="position:fixed; bottom:65px; right:0px; width:200px; height:250px; background-color: #7ed899;opacity:0.9;border-radius:20px;font-size:16px;text-align:left;color:#444444;padding:10px">
 <div style="height:150px;overflow:auto;" id="msg-io"></div>
 <div class="pb-3">
 <input class="form-control" type="text" name="msg-input" 
@@ -421,7 +421,7 @@ style="position:fixed; bottom:65px; right:0px; width:200px; height:250px; backgr
 	if('WebSocket' in window){
 		websocket=new WebSocket('ws://localhost:8080/websocket');
 	}else{
-		alert("當前瀏覽器不支持websocket");
+		Swal.fire({ type: 'error', title: '當前瀏覽器不支持websocket'})
 	}
 
 	websocket.onopen=function(event){
@@ -461,10 +461,10 @@ style="position:fixed; bottom:65px; right:0px; width:200px; height:250px; backgr
 	  var email=$("#email").val();
 	  var emailRegxp = /[\w-]+@([\w-]+\.)+[\w-]+/; 
 	  if(email===""){
-		alert("請填寫信箱")
+		 Swal.fire({ type: 'error', title: '請填寫信箱'})
 		return false
 		 }else if(emailRegxp.test(email) != true){
-		alert('電子信箱格式錯誤');
+			 Swal.fire({ type: 'error', title: '電子信箱格式錯誤'})
 		return false;
 		}
 	 $.ajax({
@@ -476,14 +476,20 @@ style="position:fixed; bottom:65px; right:0px; width:200px; height:250px; backgr
 			dataType : "JSON",
 			success : function(json) {
 				if (json.state==200) {
-					alert("感謝訂閱，請查看信箱")
-					location.href="/index"
+						Swal.fire(
+								'感謝訂閱，請查看信箱',
+								'電子報已發送至信箱',
+								'success')
+								.then(function() {
+								location.href="/index"
+								});
+						
 				}else{
-				alert("訂閱失敗，請稍後再試或聯絡客服")
+				 Swal.fire({ type: 'error', title: '訂閱失敗，請稍後再試或聯絡客服'})
 				}
 			},
 			error : function(xhr) {
-				alert("訂閱失敗，請稍後再試或聯絡客服");
+				Swal.fire({ type: 'error', title: '訂閱失敗，請稍後再試或聯絡客服'})
 			}
 		});
   });

@@ -152,7 +152,6 @@ public class ChooseCourseController extends BaseController{
 	    mav.addObject("courses", courses); //使用ModelAndView的addObject方法将course放進去  
 	    mav.addObject("tutors", tutors); //使用ModelAndView的addObject方法將tutors放進去 ("tutors"==>key, tutors==>value) 
 	    mav.addObject("reminder", reminder);
-	    
 	    return mav;  
 	} 
 	

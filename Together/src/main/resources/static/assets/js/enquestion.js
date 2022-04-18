@@ -91,8 +91,9 @@ const dataObj = {
 			data:{ answer1:this.answer1,answer2:this.answer2,answer3:this.answer3,answer4:this.answer4,account:this.account,categoryID:this.categoryID}
 
 			})
-
-			.then(response => (console.log(response.data),alert("考試分數為:"+response.data),location.href="/TC"))
+			.then(response => (console.log(response.data),Swal.fire({ type: 'info', title: '恭喜獲得'+response.data}).then(function() {
+					 location.href="/TC"
+					 })))
 			.catch(function(error) {
 				console.log(error);
 

@@ -92,7 +92,9 @@ const dataObj = {
 
 			})
 
-			.then(response => (console.log(response.data),alert("考試分數為:"+response.data),location.href="/TC"))
+			.then(response => (console.log(response.data),Swal.fire({ type: 'info', title: '恭喜獲得'+response.data}).then(function() {
+					 location.href="/TC"
+					 })))
 			.catch(function(error) {
 				console.log(error);
 

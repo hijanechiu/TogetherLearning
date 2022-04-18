@@ -8,7 +8,6 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <title>線上真人家教</title>
   <style type="text/css">
  
@@ -17,7 +16,6 @@
   	margin:8px 0px ;
   
   }
-  
   </style>
   
   <meta content="" name="description">
@@ -44,8 +42,7 @@
   <script src="assets/js/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <script type="text/javascript">
-
-  
+	
 
 //--------------------------Ajax-------------------------------------//
   
@@ -64,6 +61,16 @@
 		   document.form1.courseTime.focus();
 		   return false;
 		}
+		if(${sessionScope.sid==null}){
+			Swal.fire(
+		            '請先登入!',
+		            '登入之後才能選課',
+		            'error')
+		            .then(function() {
+		                location.href="/login"
+		                  });
+            return false
+		}
 		  
 	    var course_id = parseInt($("#courseId").val());
 		var subject_id = parseInt($("#subjectId").val());
@@ -77,6 +84,7 @@
 		           "courseTime":course_time,
 		           "requiredPoints":required_points,
 		           "tutorName":tutor_name};
+
 	    $.ajax
 	    ({ 
 	        url: '/addCourseRecord',
